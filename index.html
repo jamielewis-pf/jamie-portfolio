@@ -6,17 +6,14 @@
 <title>Jamie Lewis — Product Design Lead · Fintech & Energy</title>
 <meta name="description" content="Jamie Lewis is a Product Design Lead with 10+ years across fintech and energy. Regulated, high-stakes products, 0-to-1 and 0-to-scale, B2B and B2C. Case studies: POWWR, Vodafone, ClearScore, OANDA." />
 <meta name="robots" content="index, follow" />
-<!-- Favicon -->
 <link rel="icon" href="favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<!-- Open Graph / social -->
 <meta property="og:title" content="Jamie Lewis — Product Design Lead" />
 <meta property="og:description" content="Product design across fintech & energy. 10+ years, 0-to-1 to scale, B2B and B2C." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jamielewis.design" />
 <meta property="og:image" content="https://jamielewis.design/jamie.jpg" />
-<!-- Structured data: helps AI-scanning + recruiter tools parse who you are -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,17 +33,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* light world */
     --paper:#F6F5F2;
     --paper-2:#EFEEEA;
     --ink:#141414;
     --ink-2:#5E5E5B;
     --hair:rgba(20,20,20,.14);
     --hair-soft:rgba(20,20,20,.08);
-    /* accent — stolen from Kyson, used once */
     --orange:#FF4A17;
     --orange-ink:#B22E06;
-    /* dark world */
     --night:#0C0C0D;
     --night-2:#141416;
     --snow:#F4F3F0;
@@ -110,18 +104,20 @@
   .brand-role{font-weight:400;font-size:12px;color:var(--ink-2);letter-spacing:.01em;}
   .navlinks{display:flex;gap:30px;font-size:14.5px;color:var(--ink-2);}
   .navlinks a:hover{color:var(--ink);}
+
+  /* ---------- buttons: structure only (fill/hover logic lives in one place below) ---------- */
   .btn{
     font-family:'Inter';font-size:14.5px;font-weight:600;
-    border:none;cursor:pointer;border-radius:999px;
-    padding:11px 20px;transition:transform .18s var(--ease),background .18s;
+    border:1px solid transparent;cursor:pointer;border-radius:999px;
+    padding:11px 20px;
     display:inline-flex;align-items:center;gap:8px;
+    position:relative;isolation:isolate;overflow:hidden;
+    transition:color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);
   }
   .btn:active{transform:translateY(1px);}
-  .btn-orange{background:var(--orange);color:#fff;}
-  .btn-orange:hover{background:#ff5b2c;}
-  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover{background:rgba(20,20,20,.05);}
-  .btn-dark{background:var(--ink);color:var(--paper);}
+  .btn-orange{background-color:var(--orange);color:#fff;}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--hair);}
+  .btn-dark{background:var(--ink);color:var(--paper);border-color:transparent;}
   .btn-dark:hover{background:#000;}
   @media(max-width:720px){.navlinks{display:none;}}
   /* ---------- hero (dark) ---------- */
@@ -138,7 +134,6 @@
   .cta-row{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;}
   .cta-row .btn{padding:14px 22px;font-size:15px;}
   .hero .btn-ghost{color:var(--snow);border-color:var(--hair-d);}
-  .hero .btn-ghost:hover{background:rgba(255,255,255,.06);}
   @media(max-width:600px){.hero{padding:64px 0 76px;}}
   /* keyword chips */
   .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px;
@@ -243,8 +238,7 @@
   .foot p{color:var(--snow-2);margin:22px auto 34px;max-width:40ch;font-size:17px;}
   .foot .cta-row{justify-content:center;}
   .foot .btn-ghost{color:var(--snow);border-color:var(--hair-d);}
-  .foot .btn-ghost:hover{background:rgba(255,255,255,.06);}
-  .foot .btn-snow{background:var(--snow);color:var(--night);}
+  .foot .btn-snow{background-color:var(--snow);color:var(--night);}
   .footbar{
     max-width:var(--maxw);margin:70px auto 0;padding:26px 28px 0;
     border-top:1px solid var(--hair-d-soft);
@@ -267,18 +261,55 @@
     .reveal{opacity:1;transform:none;}
     html{scroll-behavior:auto;}
   }
-  /* ---------- sliding-fill button hover (accessible inversions, AA-compliant) ---------- */
-  .btn{background-color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
-    transition:background-position .4s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
-  .btn-orange{background-image:linear-gradient(to right,#fff 0 50%,var(--orange) 50% 100%);color:#fff;}
-  .btn-orange:hover,.btn-orange:focus-visible{background-position:0 0;color:var(--ink);}
-  .btn-ghost{background-image:linear-gradient(to right,var(--ink) 0 50%,transparent 50% 100%);color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover,.btn-ghost:focus-visible{background-position:0 0;color:var(--paper);border-color:var(--ink);}
-  .hero .btn-ghost,.foot .btn-ghost{background-image:linear-gradient(to right,var(--snow) 0 50%,transparent 50% 100%);color:var(--snow);border-color:var(--hair-d);}
-  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,.foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{background-position:0 0;color:var(--night);border-color:var(--snow);}
-  .foot .btn-snow{background-image:linear-gradient(to right,var(--orange-ink) 0 50%,var(--snow) 50% 100%);color:var(--night);}
-  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{background-position:0 0;color:#fff;}
-  @media(prefers-reduced-motion:reduce){.btn{transition:color .28s,border-color .28s;}}
+
+  /* ============================================================
+     BUTTON HOVER BEHAVIOUR — single source of truth
+     Primary: pseudo-element wipes left→right, black fill, orange
+     text/border on hover. Fill is clipped by overflow:hidden on
+     .btn and stacked with z-index:-1 inside .btn's own isolated
+     stacking context, so there's no stray fill visible at rest
+     and no lag between the hover state and the visual state.
+     Secondary: no fill at all — just a white stroke on hover.
+     ============================================================ */
+  .btn-orange::before,
+  .foot .btn-snow::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:#000;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .4s var(--ease);
+  }
+  .btn-orange:hover,
+  .btn-orange:focus-visible{
+    color:var(--orange);
+    border-color:var(--orange);
+  }
+  .btn-orange:hover::before,
+  .btn-orange:focus-visible::before{
+    transform:scaleX(1);
+  }
+  .foot .btn-snow:hover,
+  .foot .btn-snow:focus-visible{
+    color:var(--orange);
+    border-color:var(--orange);
+  }
+  .foot .btn-snow:hover::before,
+  .foot .btn-snow:focus-visible::before{
+    transform:scaleX(1);
+  }
+
+  .btn-ghost:hover,.btn-ghost:focus-visible,
+  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,
+  .foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{
+    border-color:#fff;
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .btn-orange::before,.foot .btn-snow::before{transition:none;}
+  }
 </style>
 </head>
 <body id="top">
@@ -516,7 +547,6 @@
 </main>
 <div class="toast" id="toast">Email copied</div>
 <script>
-  // copy-email (real clipboard, not mailto)
   const toast=document.getElementById('toast');
   document.querySelectorAll('[data-copy]').forEach(btn=>{
     btn.addEventListener('click',async()=>{
@@ -528,7 +558,6 @@
       setTimeout(()=>toast.classList.remove('show'),1800);
     });
   });
-  // scroll reveal
   const io=new IntersectionObserver((es)=>{
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:.12});
