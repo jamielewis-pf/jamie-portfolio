@@ -6,13 +6,16 @@
 <title>Jamie Lewis — Product Design Lead · Fintech & Energy</title>
 <meta name="description" content="Jamie Lewis is a Product Design Lead with 10+ years across fintech and energy. Regulated, high-stakes products, 0-to-1 and 0-to-scale, B2B and B2C. Case studies: POWWR, Vodafone, ClearScore, OANDA." />
 <meta name="robots" content="index, follow" />
-
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <!-- Open Graph / social -->
 <meta property="og:title" content="Jamie Lewis — Product Design Lead" />
 <meta property="og:description" content="Product design across fintech & energy. 10+ years, 0-to-1 to scale, B2B and B2C." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jamielewis.design" />
-
+<meta property="og:image" content="https://jamielewis.design/jamie.jpg" />
 <!-- Structured data: helps AI-scanning + recruiter tools parse who you are -->
 <script type="application/ld+json">
 {
@@ -21,17 +24,16 @@
   "name": "Jamie Lewis",
   "jobTitle": "Product Design Lead",
   "url": "https://jamielewis.design",
+  "image": "https://jamielewis.design/jamie.jpg",
   "email": "mailto:jamie@jamielewis.design",
   "knowsAbout": ["Product Design","Fintech","Energy","Design Systems","0-to-1","B2B","B2C","Design Leadership"],
   "worksFor": { "@type": "Organization", "name": "POWWR" },
   "description": "Product Design Lead with 10+ years across fintech and energy, delivering regulated, high-stakes products from 0-to-1 to scale."
 }
 </script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-
 <style>
   :root{
     /* light world */
@@ -51,12 +53,10 @@
     --snow-2:#9C9C98;
     --hair-d:rgba(255,255,255,.14);
     --hair-d-soft:rgba(255,255,255,.07);
-
     --maxw:1180px;
     --r:16px;
     --ease:cubic-bezier(.22,.61,.36,1);
   }
-
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
@@ -72,9 +72,7 @@
   a{color:inherit;text-decoration:none;}
   img,svg{display:block;max-width:100%;}
   ::selection{background:var(--orange);color:#fff;}
-
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-
   .eyebrow{
     font-family:'JetBrains Mono',monospace;
     font-size:12px;letter-spacing:.14em;text-transform:uppercase;
@@ -87,7 +85,6 @@
     line-height:.98;
     margin:0;
   }
-
   /* ---------- focus / a11y ---------- */
   a:focus-visible,button:focus-visible{
     outline:2.5px solid var(--orange);
@@ -95,7 +92,6 @@
   }
   .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:200;}
   .skip:focus{left:12px;top:12px;}
-
   /* ---------- nav ---------- */
   .nav{
     position:sticky;top:0;z-index:100;
@@ -103,9 +99,15 @@
     backdrop-filter:saturate(1.4) blur(10px);
     border-bottom:1px solid var(--hair-soft);
   }
-  .nav .row{display:flex;align-items:center;justify-content:space-between;height:66px;}
-  .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px;letter-spacing:-.01em;}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);}
+  .nav .row{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand .avatar{
+    width:38px;height:38px;border-radius:50%;object-fit:cover;
+    border:1px solid var(--hair);flex:none;
+  }
+  .brand-text{display:flex;flex-direction:column;line-height:1.12;}
+  .brand-name{font-weight:600;font-size:15px;letter-spacing:-.01em;color:var(--ink);}
+  .brand-role{font-weight:400;font-size:12px;color:var(--ink-2);letter-spacing:.01em;}
   .navlinks{display:flex;gap:30px;font-size:14.5px;color:var(--ink-2);}
   .navlinks a:hover{color:var(--ink);}
   .btn{
@@ -122,7 +124,6 @@
   .btn-dark{background:var(--ink);color:var(--paper);}
   .btn-dark:hover{background:#000;}
   @media(max-width:720px){.navlinks{display:none;}}
-
   /* ---------- hero ---------- */
   .hero{padding:64px 0 30px;}
   .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end;}
@@ -138,7 +139,6 @@
   .hero .lede b{color:var(--ink);font-weight:600;}
   .cta-row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
   .cta-row .btn{padding:14px 22px;font-size:15px;}
-
   /* hero visual — abstract product surface (swap for a real product/portrait shot) */
   .hero-visual{
     aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;
@@ -150,7 +150,6 @@
     .hero-grid{grid-template-columns:1fr;gap:34px;}
     .hero-visual{max-width:420px;order:-1;}
   }
-
   /* keyword chips */
   .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px;
     border-top:1px solid var(--hair);padding-top:26px;}
@@ -160,7 +159,6 @@
     background:#fff;
   }
   .chip.accent{border-color:var(--orange);color:var(--orange-ink);}
-
   /* ---------- brand wall (echoes "I transform brands") ---------- */
   .wall{padding:70px 0;border-top:1px solid var(--hair-soft);}
   .wall-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
@@ -181,16 +179,13 @@
   .wall h2{font-size:clamp(30px,4.4vw,50px);max-width:14ch;}
   .wall p{color:var(--ink-2);max-width:44ch;margin-top:18px;font-size:17px;}
   @media(max-width:860px){.wall-grid{grid-template-columns:1fr;gap:34px;}}
-
   /* ---------- recent work (dark) ---------- */
   .work{background:var(--night);color:var(--snow);padding:96px 0 100px;}
   .work-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:44px;flex-wrap:wrap;}
   .work-head h2{font-size:clamp(34px,5vw,58px);color:var(--snow);}
   .work-head .meta{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.06em;color:var(--snow-2);}
-
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
   @media(max-width:760px){.cards{grid-template-columns:1fr;}}
-
   .card{
     display:block;border-radius:var(--r);overflow:hidden;
     background:var(--night-2);border:1px solid var(--hair-d-soft);
@@ -214,7 +209,6 @@
   .card-impact b{color:var(--orange);font-weight:700;font-size:15px;}
   .card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
   .card-tags span{font-size:11.5px;color:var(--snow-2);border:1px solid var(--hair-d);border-radius:999px;padding:5px 11px;}
-
   /* ---------- impact / about (light) ---------- */
   .about{padding:92px 0;}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
@@ -226,7 +220,33 @@
   .stat .n.accent{color:var(--orange);}
   .stat .l{font-size:13px;color:var(--ink-2);margin-top:8px;max-width:14ch;}
   @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:30px;}}
-
+  /* ---------- about me + experience (dark) ---------- */
+  .dark{background:var(--night);color:var(--snow);}
+  .aboutme{padding:96px 0 20px;}
+  .aboutme .inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start;}
+  .aboutme .lab{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--snow-2);}
+  .aboutme h2{font-size:clamp(30px,4.2vw,48px);color:var(--snow);margin:14px 0 0;max-width:12ch;}
+  .aboutme p{color:var(--snow-2);max-width:62ch;margin:0;}
+  .aboutme p+p{margin-top:16px;}
+  .aboutme p b{color:var(--snow);font-weight:600;}
+  .aboutme .beyond{margin-top:26px;padding-top:22px;border-top:1px solid var(--hair-d-soft);}
+  @media(max-width:860px){.aboutme .inner{grid-template-columns:1fr;gap:26px;}}
+  .exp{padding:64px 0 100px;}
+  .exp .lab{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--snow-2);}
+  .exp h2{font-size:clamp(28px,3.6vw,42px);color:var(--snow);margin:12px 0 34px;}
+  .exp-list{border-top:1px solid var(--hair-d-soft);}
+  .exp-row{display:grid;grid-template-columns:52px 1.3fr 1fr 1.2fr;gap:22px;align-items:center;
+    padding:22px 4px;border-bottom:1px solid var(--hair-d-soft);}
+  .exp-badge{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    font-family:'Archivo';font-weight:800;font-size:15px;letter-spacing:-.01em;color:#fff;}
+  .exp-co{font-weight:600;font-size:16.5px;color:var(--snow);}
+  .exp-when{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--snow-2);letter-spacing:.02em;}
+  .exp-role{font-size:15px;color:var(--snow-2);}
+  @media(max-width:720px){
+    .exp-row{grid-template-columns:44px 1fr;grid-auto-rows:auto;row-gap:4px;padding:20px 4px;}
+    .exp-badge{grid-row:span 3;}
+    .exp-when{order:3;}.exp-role{order:2;}
+  }
   /* ---------- cta footer (dark) ---------- */
   .foot{background:var(--night);color:var(--snow);padding:110px 0 40px;text-align:center;}
   .foot h2{font-size:clamp(40px,6.5vw,80px);color:var(--snow);max-width:16ch;margin:0 auto;}
@@ -242,7 +262,6 @@
     font-size:13px;color:var(--snow-2);
   }
   .footbar a:hover{color:var(--snow);}
-
   /* copy-email toast */
   .toast{
     position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);
@@ -250,7 +269,6 @@
     font-size:14px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:300;
   }
   .toast.show{opacity:1;transform:translate(-50%,0);}
-
   /* reveal */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
   .reveal.in{opacity:1;transform:none;}
@@ -261,13 +279,18 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 <a href="#work" class="skip">Skip to work</a>
-
 <!-- ============ NAV ============ -->
 <header class="nav">
   <div class="wrap row">
-    <a href="/" class="brand"><span class="dot"></span> Jamie Lewis</a>
+    <a href="/" class="brand" aria-label="Jamie Lewis — Product Design Lead">
+      <img class="avatar" src="jamie.jpg" alt="Jamie Lewis" width="38" height="38" />
+      <span class="brand-text">
+        <span class="brand-name">Jamie Lewis</span>
+        <span class="brand-role">Product Design Lead</span>
+      </span>
+    </a>
     <nav class="navlinks">
       <a href="#work">Work</a>
       <a href="#about">About</a>
@@ -276,7 +299,6 @@
     <a href="#contact" class="btn btn-orange">Get in touch</a>
   </div>
 </header>
-
 <main>
 <!-- ============ HERO (light) ============ -->
 <section class="hero">
@@ -299,7 +321,6 @@
         <span class="chip">Team Leadership</span>
       </div>
     </div>
-
     <!-- Abstract product surface. Swap for a real product shot or portrait when ready. -->
     <div class="hero-visual" aria-hidden="true">
       <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
@@ -334,7 +355,6 @@
     </div>
   </div>
 </section>
-
 <!-- ============ BRAND WALL ("I transform brands" analog) ============ -->
 <section class="wall reveal">
   <div class="wrap wall-grid">
@@ -351,7 +371,6 @@
     </div>
   </div>
 </section>
-
 <!-- ============ RECENT WORK (dark) ============ -->
 <section class="work" id="work">
   <div class="wrap">
@@ -359,10 +378,9 @@
       <h2 class="display">Recent work</h2>
       <span class="meta">Four case studies · fintech &amp; energy · 2016–2026</span>
     </div>
-
     <div class="cards">
       <!-- POWWR -->
-      <a class="card reveal" href="/powwr.html">
+      <a class="card reveal" href="powwr.html">
         <div class="banner">
           <span class="tag">Energy · B2B SaaS</span>
           <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -383,9 +401,8 @@
           <div class="card-tags"><span>Product strategy</span><span>Design system</span><span>Research</span></div>
         </div>
       </a>
-
       <!-- Vodafone -->
-      <a class="card reveal" href="/vodafone.html">
+      <a class="card reveal" href="vodafone.html">
         <div class="banner">
           <span class="tag">Telecoms · B2C</span>
           <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -405,9 +422,8 @@
           <div class="card-tags"><span>Mobile</span><span>Service design</span><span>Accessibility</span></div>
         </div>
       </a>
-
       <!-- ClearScore -->
-      <a class="card reveal" href="/clearscore.html">
+      <a class="card reveal" href="clearscore.html">
         <div class="banner">
           <span class="tag">Fintech · B2C</span>
           <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -427,9 +443,8 @@
           <div class="card-tags"><span>Growth</span><span>Data viz</span><span>Experimentation</span></div>
         </div>
       </a>
-
       <!-- OANDA -->
-      <a class="card reveal" href="/oanda.html">
+      <a class="card reveal" href="oanda.html">
         <div class="banner">
           <span class="tag">Fintech · Trading</span>
           <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -453,7 +468,6 @@
     </div>
   </div>
 </section>
-
 <!-- ============ ABOUT / IMPACT (light) ============ -->
 <section class="about" id="about">
   <div class="wrap about-grid reveal">
@@ -469,7 +483,63 @@
     </div>
   </div>
 </section>
-
+<!-- ============ A LITTLE ABOUT ME (dark) ============ -->
+<section class="dark aboutme reveal">
+  <div class="wrap inner">
+    <div>
+      <p class="lab">Beyond the CV</p>
+      <h2 class="display">A little about me</h2>
+    </div>
+    <div>
+      <p>👋 Hi, I'm Jamie — a <b>strategic design leader</b> with strong facilitation, communication and systems-thinking skills.</p>
+      <p>I excel at translating complexity into actionable direction, leading multidisciplinary teams and shaping product design strategy. I have a strong interest in <b>AI-powered workflow automation</b> and experience innovation.</p>
+      <p>I'm comfortable operating at executive-level altitude and ensuring vision alignment amongst senior stakeholders.</p>
+      <div class="beyond">
+        <p>🌊 <b>Beyond the screen</b> — I'm a leader with IceBreakers UK, a men's mental health charity focused on cold-water therapy, nature and connection.</p>
+        <p>Outside of work I'm driven by curiosity and adventure: from backpacking across Australia and New Zealand to taking on a wide mix of jobs along the way — including harvesting 80kg banana bunches while dodging venomous snakes, and constructing kiwi orchards by hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ EXPERIENCE (dark) ============ -->
+<section class="dark exp reveal">
+  <div class="wrap">
+    <p class="lab">Career</p>
+    <h2 class="display">Experience</h2>
+    <div class="exp-list">
+      <div class="exp-row">
+        <div class="exp-badge" style="background:#FF7A00;">P</div>
+        <div class="exp-co">POWWR</div>
+        <div class="exp-when">2025 — Present</div>
+        <div class="exp-role">Product Design Lead</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-badge" style="background:#1C1C1E;border:1px solid var(--hair-d);">G</div>
+        <div class="exp-co">GAIN Conversion</div>
+        <div class="exp-when">2021 — 2025</div>
+        <div class="exp-role">Lead UI/UX Designer</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-badge" style="background:#C0202B;">O</div>
+        <div class="exp-co">Oxford Seating Company</div>
+        <div class="exp-when">2020 — 2021</div>
+        <div class="exp-role">Product Designer</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-badge" style="background:#12876F;">AU</div>
+        <div class="exp-co">Lived &amp; worked in Australasia</div>
+        <div class="exp-when">2017 — 2020</div>
+        <div class="exp-role">Interior Designer / Labourer</div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-badge" style="background:#0051BA;">IK</div>
+        <div class="exp-co">IKEA Reading</div>
+        <div class="exp-when">2016 — 2017</div>
+        <div class="exp-role">Kitchen Designer</div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- ============ CTA FOOTER (dark) ============ -->
 <section class="foot" id="contact">
   <div class="wrap">
@@ -486,9 +556,7 @@
   </div>
 </section>
 </main>
-
 <div class="toast" id="toast">Email copied</div>
-
 <script>
   // copy-email (real clipboard, not mailto)
   const toast=document.getElementById('toast');
@@ -502,7 +570,6 @@
       setTimeout(()=>toast.classList.remove('show'),1800);
     });
   });
-
   // scroll reveal
   const io=new IntersectionObserver((es)=>{
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});

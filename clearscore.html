@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ClearScore — Case study · Jamie Lewis</title>
+<meta name="description" content="ClearScore recommendations — case study by Jamie Lewis, Product Design Lead. Recommendations that read as advice, not advertising" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta property="og:title" content="ClearScore — Case study · Jamie Lewis" />
+<meta property="og:description" content="Recommendations that read as advice, not advertising" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jamielewis.design/clearscore" />
+<meta property="og:image" content="https://jamielewis.design/clearscore_banner.jpg" />
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"CreativeWork",
+  "name":"ClearScore",
+  "about":"Recommendations that read as advice, not advertising",
+  "author":{"@type":"Person","name":"Jamie Lewis","jobTitle":"Product Design Lead","url":"https://jamielewis.design"},
+  "url":"https://jamielewis.design/clearscore"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F5F2;--paper-2:#EFEEEA;--ink:#141414;--ink-2:#5E5E5B;
+    --hair:rgba(20,20,20,.14);--hair-soft:rgba(20,20,20,.08);
+    --orange:#FF4A17;--orange-ink:#B22E06;
+    --night:#0C0C0D;--night-2:#141416;--snow:#F4F3F0;--snow-2:#9C9C98;
+    --hair-d:rgba(255,255,255,.14);--hair-d-soft:rgba(255,255,255,.07);
+    --maxw:1180px;--measure:720px;--r:16px;--ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  ::selection{background:var(--orange);color:#fff;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);}
+  .display{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.02;margin:0;}
+  a:focus-visible,button:focus-visible{outline:2.5px solid var(--orange);outline-offset:3px;border-radius:6px;}
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:200;}
+  .skip:focus{left:12px;top:12px;}
+  .ph{color:var(--orange);font-family:'JetBrains Mono',monospace;}
+  .nav{position:sticky;top:0;z-index:100;background:rgba(246,245,242,.82);
+    backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--hair-soft);}
+  .nav .row{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand .avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid var(--hair);flex:none;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.12;}
+  .brand-name{font-weight:600;font-size:15px;letter-spacing:-.01em;color:var(--ink);}
+  .brand-role{font-weight:400;font-size:12px;color:var(--ink-2);letter-spacing:.01em;}
+  .navlinks{display:flex;gap:30px;font-size:14.5px;color:var(--ink-2);}
+  .navlinks a:hover{color:var(--ink);}
+  .btn{font-family:'Inter';font-size:14.5px;font-weight:600;border:none;cursor:pointer;
+    border-radius:999px;padding:11px 20px;transition:transform .18s var(--ease),background .18s;
+    display:inline-flex;align-items:center;gap:8px;}
+  .btn:active{transform:translateY(1px);}
+  .btn-orange{background:var(--orange);color:#fff;}
+  .btn-orange:hover{background:#ff5b2c;}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
+  .btn-ghost:hover{background:rgba(20,20,20,.05);}
+  @media(max-width:720px){.navlinks{display:none;}}
+  .backrow{padding:26px 0 0;}
+  .back{font-size:14px;color:var(--ink-2);display:inline-flex;gap:7px;align-items:center;}
+  .back:hover{color:var(--ink);}
+  .cs-hero{padding:22px 0 0;}
+  .cs-banner{margin:18px 0 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--hair);
+    box-shadow:0 30px 60px -34px rgba(20,20,20,.4);}
+  .cs-banner img{width:100%;height:auto;display:block;}
+  .impact{background:var(--night);color:var(--snow);padding:64px 0;margin-top:56px;}
+  .impact .lab{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--snow-2);}
+  .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:30px;}
+  .metric .n{font-family:'Archivo';font-weight:800;font-size:clamp(40px,5.4vw,60px);letter-spacing:-.02em;line-height:1;color:var(--orange);}
+  .metric .l{font-size:14.5px;color:var(--snow);margin-top:12px;max-width:24ch;}
+  @media(max-width:760px){.impact-grid{grid-template-columns:1fr;gap:26px;}}
+  .sec{padding:60px 0;border-bottom:1px solid var(--hair-soft);}
+  .sec:last-of-type{border-bottom:none;}
+  .sec .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-ink);}
+  .sec h2{font-family:'Archivo';font-weight:800;letter-spacing:-.02em;font-size:clamp(26px,3.4vw,38px);margin:14px 0 22px;max-width:20ch;}
+  .sec p{color:var(--ink-2);max-width:var(--measure);}
+  .sec p+p{margin-top:16px;}
+  .sec p b{color:var(--ink);font-weight:600;}
+  .insight{display:grid;grid-template-columns:1fr;gap:10px;background:var(--night);color:var(--snow);
+    border-radius:var(--r);padding:38px 40px;margin-top:34px;max-width:var(--measure);}
+  .insight .big{font-family:'Archivo';font-weight:800;font-size:clamp(24px,3vw,32px);letter-spacing:-.01em;line-height:1.15;color:var(--snow);}
+  .insight .big em{color:var(--orange);font-style:normal;}
+  .insight .cap{font-size:14px;color:var(--snow-2);font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;}
+  .next{background:var(--night);color:var(--snow);padding:22px 0 96px;}
+  .next .lab{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--snow-2);margin-bottom:18px;}
+  .next-card{display:block;border-radius:var(--r);overflow:hidden;background:var(--night-2);
+    border:1px solid var(--hair-d-soft);transition:transform .3s var(--ease),border-color .3s;}
+  .next-card:hover{transform:translateY(-5px);border-color:var(--hair-d);}
+  .next-banner{aspect-ratio:16/5;overflow:hidden;}
+  .next-banner img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+  .next-body{padding:22px 26px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
+  .next-body h3{font-family:'Archivo';font-weight:700;font-size:22px;margin:0;color:var(--snow);}
+  .next-body .r{font-size:13.5px;color:var(--snow-2);margin-top:6px;}
+  .next-go{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange);white-space:nowrap;}
+  .foot{background:var(--night);color:var(--snow);padding:90px 0 40px;text-align:center;}
+  .foot h2{font-size:clamp(34px,5vw,60px);color:var(--snow);max-width:16ch;margin:0 auto;}
+  .foot p{color:var(--snow-2);margin:20px auto 30px;max-width:40ch;font-size:17px;}
+  .foot .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .foot .btn-ghost{color:var(--snow);border-color:var(--hair-d);}
+  .foot .btn-ghost:hover{background:rgba(255,255,255,.06);}
+  .foot .btn-snow{background:var(--snow);color:var(--night);}
+  .footbar{max-width:var(--maxw);margin:70px auto 0;padding:26px 28px 0;border-top:1px solid var(--hair-d-soft);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--snow-2);}
+  .footbar a:hover{color:var(--snow);}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:#fff;
+    padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:300;}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+</style>
+</head>
+<body id="top">
+<a href="#context" class="skip">Skip to content</a>
+<header class="nav">
+  <div class="wrap row">
+    <a href="index.html" class="brand" aria-label="Jamie Lewis — Product Design Lead">
+      <img class="avatar" src="jamie.jpg" alt="Jamie Lewis" width="38" height="38" />
+      <span class="brand-text">
+        <span class="brand-name">Jamie Lewis</span>
+        <span class="brand-role">Product Design Lead</span>
+      </span>
+    </a>
+    <nav class="navlinks">
+      <a href="index.html#work">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="index.html#contact" class="btn btn-orange">Get in touch</a>
+  </div>
+</header>
+<main>
+  <div class="wrap backrow"><a href="index.html#work" class="back">&larr; All work</a></div>
+  <section class="cs-hero">
+    <div class="wrap">
+      <h1 class="visually-hidden">ClearScore — Recommendations that read as advice, not advertising</h1>
+      <p class="eyebrow">Product Design Lead · B2C · Fintech · 0-to-1 &rarr; Scale</p>
+      <div class="cs-banner"><img src="clearscore_banner.jpg" alt="ClearScore case study — Recommendations that read as advice, not advertising" /></div>
+    </div>
+  </section>
+  <section class="impact">
+    <div class="wrap">
+      <p class="lab">Impact at a glance</p>
+      <div class="impact-grid">
+        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">increase in recommendation click-through</div></div>
+        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">uplift in approved applications</div></div>
+        <div class="metric"><div class="n"><span class="ph">[XX pt]</span></div><div class="l">improvement in trust / NPS score</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="context">
+    <div class="wrap">
+      <p class="kicker">Context</p>
+      <h2>Turning a free utility into a trusted guide</h2>
+      <p>ClearScore gives people free access to their credit score and report, then earns revenue by recommending credit products matched to their profile via Open Banking.</p>
+      <p>I led design on the personalised recommendations and credit-building journey — the part of the product that has to turn a free utility into a trusted financial guide without ever feeling like an upsell.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <p class="kicker">Challenge</p>
+      <h2>Advice, not advertising</h2>
+      <p>Users came to ClearScore to check a number, not to buy a credit card — so anything that felt like a sales pitch risked breaking the trust the whole business model depends on.</p>
+      <p>The challenge was <b>designing recommendations that felt like advice, not advertising</b>, while still driving the marketplace conversions that fund the free product.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <p class="kicker">Approach &amp; Process</p>
+      <h2>Confidence beat price</h2>
+      <p>Research started with a blunt question to users: “does this feel like it's for you, or for them?” That framing exposed which UI patterns read as helpful (contextual, score-linked explanations) versus which read as sales (generic banner ads). I redesigned the recommendation surface around eligibility transparency — showing users <b>why</b> a product matched their score before showing the product itself — and tested it against the incumbent banner-style layout with a live A/B split.</p>
+      <p>One insight drove the whole redesign: users trusted a recommendation more when they understood their own likelihood of approval than when they saw a lower headline rate.</p>
+      <div class="insight">
+        <div class="cap">Key insight</div>
+        <div class="big">Users trusted a recommendation more when they understood their odds of approval than when they saw a lower rate. <em>Confidence beat price.</em></div>
+      </div>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <p class="kicker">Impact</p>
+      <h2>The more honest design also won commercially</h2>
+      <p>The eligibility-first layout outperformed the incumbent on both trust perception and marketplace conversion — a rare case where the more honest design also won commercially. Approved applications rose as users applied to products they were actually likely to get, rather than aspirational ones they'd bounce off.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <p class="kicker">Learnings &amp; Reflection</p>
+      <h2>Transparency is the highest-leverage lever</h2>
+      <p>Fintech design lives or dies on perceived motive. The interface has to constantly answer “who is this for?” before a user will act on it.</p>
+      <p>My reflection from this project: in trust-sensitive categories, <b>transparency isn't a compliance requirement bolted onto design — it's the highest-leverage design lever you have</b>.</p>
+    </div>
+  </section>
+  <section class="next">
+    <div class="wrap">
+      <p class="lab">Next case study</p>
+      <a class="next-card" href="oanda.html">
+        <div class="next-banner"><img src="oanda_banner.jpg" alt="OANDA — Trade Web" /></div>
+        <div class="next-body">
+          <div><h3>OANDA — Trade Web</h3><div class="r">Product Design Lead · B2C &amp; B2B · FX / Trading</div></div>
+          <span class="next-go">View OANDA &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
+<section class="foot" id="contact">
+  <div class="wrap">
+    <h2 class="display">Let's build something worth shipping.</h2>
+    <p>Open to product design leadership roles. The quickest way to reach me is email.</p>
+    <div class="cta-row">
+      <button class="btn btn-snow" data-copy="jamie@jamielewis.design">Copy email &#10233;</button>
+      <a href="https://linkedin.com/in/jamielewis" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+    </div>
+  </div>
+  <div class="footbar">
+    <span>&copy; 2026 Jamie Lewis &middot; Product Design Lead</span>
+    <span><a href="index.html#work">All work</a> &nbsp;&middot;&nbsp; <a href="#top">Back to top &#8593;</a></span>
+  </div>
+</section>
+<div class="toast" id="toast">Email copied</div>
+<script>
+  const toast=document.getElementById('toast');
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+      const val=btn.getAttribute('data-copy');
+      try{await navigator.clipboard.writeText(val);}
+      catch(e){const t=document.createElement('textarea');t.value=val;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+      toast.textContent=val+' copied';toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'),1800);
+    });
+  });
+</script>
+</body>
+</html>
