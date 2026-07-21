@@ -1,230 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jamie Lewis — Product Design Lead (Fintech & Energy)</title>
-  <meta name="description" content="Jamie Lewis is a Product Design Lead with 10+ years across fintech and energy — 0-to-1 and 0-to-scale products, B2B and B2C. Case studies: POWWR, Vodafone, ClearScore, OANDA." />
-  <link rel="canonical" href="https://jamielewis.design/" />
-  <meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0b0b0a" media="(prefers-color-scheme: dark)" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jamie Lewis — Product Design Lead · Fintech & Energy</title>
+<meta name="description" content="Jamie Lewis is a Product Design Lead with 10+ years across fintech and energy. Regulated, high-stakes products, 0-to-1 and 0-to-scale, B2B and B2C. Case studies: POWWR, Vodafone, ClearScore, OANDA." />
+<meta name="robots" content="index, follow" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Jamie Lewis — Product Design Lead" />
-  <meta property="og:description" content="Product design across fintech and energy. 0-to-1, B2B & B2C. Case studies: POWWR, Vodafone, ClearScore, OANDA." />
-  <meta property="og:url" content="https://jamielewis.design/" />
-  <meta property="og:image" content="https://jamielewis.design/assets/img/og.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+<!-- Open Graph / social -->
+<meta property="og:title" content="Jamie Lewis — Product Design Lead" />
+<meta property="og:description" content="Product design across fintech & energy. 10+ years, 0-to-1 to scale, B2B and B2C." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://jamielewis.design" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;520;560;600;640;680&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+<!-- Structured data: helps AI-scanning + recruiter tools parse who you are -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jamie Lewis",
+  "jobTitle": "Product Design Lead",
+  "url": "https://jamielewis.design",
+  "email": "mailto:jamie@jamielewis.design",
+  "knowsAbout": ["Product Design","Fintech","Energy","Design Systems","0-to-1","B2B","B2C","Design Leadership"],
+  "worksFor": { "@type": "Organization", "name": "POWWR" },
+  "description": "Product Design Lead with 10+ years across fintech and energy, delivering regulated, high-stakes products from 0-to-1 to scale."
+}
+</script>
 
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
-  <!-- Structured data for AI/recruiter scanners -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Jamie Lewis",
-    "jobTitle": "Product Design Lead",
-    "url": "https://jamielewis.design",
-    "email": "hello@jamielewis.design",
-    "knowsAbout": ["Product Design", "Design Leadership", "Fintech", "Energy", "Design Systems", "User Research", "0-to-1 Product"],
-    "sameAs": ["https://www.linkedin.com/in/uxjay/", "https://read.cv/jamielewis"]
+<style>
+  :root{
+    /* light world */
+    --paper:#F6F5F2;
+    --paper-2:#EFEEEA;
+    --ink:#141414;
+    --ink-2:#5E5E5B;
+    --hair:rgba(20,20,20,.14);
+    --hair-soft:rgba(20,20,20,.08);
+    /* accent — stolen from Kyson, used once */
+    --orange:#FF4A17;
+    --orange-ink:#B22E06;
+    /* dark world */
+    --night:#0C0C0D;
+    --night-2:#141416;
+    --snow:#F4F3F0;
+    --snow-2:#9C9C98;
+    --hair-d:rgba(255,255,255,.14);
+    --hair-d-soft:rgba(255,255,255,.07);
+
+    --maxw:1180px;
+    --r:16px;
+    --ease:cubic-bezier(.22,.61,.36,1);
   }
-  </script>
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  ::selection{background:var(--orange);color:#fff;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-2);
+  }
+  .display{
+    font-family:'Archivo',sans-serif;
+    font-weight:800;
+    letter-spacing:-.02em;
+    line-height:.98;
+    margin:0;
+  }
+
+  /* ---------- focus / a11y ---------- */
+  a:focus-visible,button:focus-visible{
+    outline:2.5px solid var(--orange);
+    outline-offset:3px;border-radius:6px;
+  }
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:200;}
+  .skip:focus{left:12px;top:12px;}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(246,245,242,.82);
+    backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom:1px solid var(--hair-soft);
+  }
+  .nav .row{display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px;letter-spacing:-.01em;}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);}
+  .navlinks{display:flex;gap:30px;font-size:14.5px;color:var(--ink-2);}
+  .navlinks a:hover{color:var(--ink);}
+  .btn{
+    font-family:'Inter';font-size:14.5px;font-weight:600;
+    border:none;cursor:pointer;border-radius:999px;
+    padding:11px 20px;transition:transform .18s var(--ease),background .18s;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-orange{background:var(--orange);color:#fff;}
+  .btn-orange:hover{background:#ff5b2c;}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
+  .btn-ghost:hover{background:rgba(20,20,20,.05);}
+  .btn-dark{background:var(--ink);color:var(--paper);}
+  .btn-dark:hover{background:#000;}
+  @media(max-width:720px){.navlinks{display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 30px;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end;}
+  .hero h1{
+    font-size:clamp(46px,7.2vw,92px);
+    max-width:14ch;margin:18px 0 0;
+  }
+  .hero h1 em{font-style:italic;font-weight:700;}
+  .hero .lede{
+    font-size:clamp(17px,2vw,20px);color:var(--ink-2);
+    max-width:46ch;margin:26px 0 0;line-height:1.5;
+  }
+  .hero .lede b{color:var(--ink);font-weight:600;}
+  .cta-row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
+  .cta-row .btn{padding:14px 22px;font-size:15px;}
+
+  /* hero visual — abstract product surface (swap for a real product/portrait shot) */
+  .hero-visual{
+    aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;
+    border:1px solid var(--hair);background:#fff;
+    box-shadow:0 30px 60px -30px rgba(20,20,20,.28);
+  }
+  .hero-visual svg{width:100%;height:100%;}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .hero-visual{max-width:420px;order:-1;}
+  }
+
+  /* keyword chips */
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px;
+    border-top:1px solid var(--hair);padding-top:26px;}
+  .chip{
+    font-size:13px;font-weight:500;color:var(--ink);
+    border:1px solid var(--hair);border-radius:999px;padding:7px 14px;
+    background:#fff;
+  }
+  .chip.accent{border-color:var(--orange);color:var(--orange-ink);}
+
+  /* ---------- brand wall (echoes "I transform brands") ---------- */
+  .wall{padding:70px 0;border-top:1px solid var(--hair-soft);}
+  .wall-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .logos{
+    display:grid;grid-template-columns:1fr 1fr;
+    border:1px solid var(--hair);border-radius:var(--r);overflow:hidden;background:#fff;
+  }
+  .logo-cell{
+    display:flex;align-items:center;justify-content:center;
+    padding:34px 20px;border-right:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);
+    min-height:118px;
+  }
+  .logo-cell:nth-child(2n){border-right:none;}
+  .logo-cell:nth-last-child(-n+2){border-bottom:none;}
+  .logo-cell span{
+    font-family:'Archivo';font-weight:800;font-size:23px;letter-spacing:-.01em;color:var(--ink);
+  }
+  .wall h2{font-size:clamp(30px,4.4vw,50px);max-width:14ch;}
+  .wall p{color:var(--ink-2);max-width:44ch;margin-top:18px;font-size:17px;}
+  @media(max-width:860px){.wall-grid{grid-template-columns:1fr;gap:34px;}}
+
+  /* ---------- recent work (dark) ---------- */
+  .work{background:var(--night);color:var(--snow);padding:96px 0 100px;}
+  .work-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:44px;flex-wrap:wrap;}
+  .work-head h2{font-size:clamp(34px,5vw,58px);color:var(--snow);}
+  .work-head .meta{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.06em;color:var(--snow-2);}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  @media(max-width:760px){.cards{grid-template-columns:1fr;}}
+
+  .card{
+    display:block;border-radius:var(--r);overflow:hidden;
+    background:var(--night-2);border:1px solid var(--hair-d-soft);
+    transition:transform .3s var(--ease),border-color .3s;
+  }
+  .card:hover{transform:translateY(-5px);border-color:var(--hair-d);}
+  .banner{position:relative;aspect-ratio:16/8;overflow:hidden;}
+  .banner svg{position:absolute;inset:0;width:100%;height:100%;}
+  .banner .tag{
+    position:absolute;top:14px;left:14px;z-index:2;
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    background:rgba(0,0,0,.38);color:#fff;padding:6px 10px;border-radius:999px;
+    backdrop-filter:blur(4px);
+  }
+  .card-body{padding:22px 24px 26px;}
+  .card-body h3{font-family:'Archivo';font-weight:700;font-size:21px;margin:0;letter-spacing:-.01em;color:var(--snow);}
+  .card-role{font-size:13.5px;color:var(--snow-2);margin-top:6px;}
+  .card-impact{
+    margin-top:16px;font-size:14px;color:var(--snow);
+  }
+  .card-impact b{color:var(--orange);font-weight:700;font-size:15px;}
+  .card-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+  .card-tags span{font-size:11.5px;color:var(--snow-2);border:1px solid var(--hair-d);border-radius:999px;padding:5px 11px;}
+
+  /* ---------- impact / about (light) ---------- */
+  .about{padding:92px 0;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .about h2{font-size:clamp(28px,3.8vw,42px);max-width:15ch;}
+  .about p{color:var(--ink-2);max-width:46ch;margin-top:0;}
+  .about p+p{margin-top:16px;}
+  .stats{display:flex;gap:40px;margin-top:34px;flex-wrap:wrap;}
+  .stat .n{font-family:'Archivo';font-weight:800;font-size:clamp(38px,5vw,54px);letter-spacing:-.02em;line-height:1;}
+  .stat .n.accent{color:var(--orange);}
+  .stat .l{font-size:13px;color:var(--ink-2);margin-top:8px;max-width:14ch;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:30px;}}
+
+  /* ---------- cta footer (dark) ---------- */
+  .foot{background:var(--night);color:var(--snow);padding:110px 0 40px;text-align:center;}
+  .foot h2{font-size:clamp(40px,6.5vw,80px);color:var(--snow);max-width:16ch;margin:0 auto;}
+  .foot p{color:var(--snow-2);margin:22px auto 34px;max-width:40ch;font-size:17px;}
+  .foot .cta-row{justify-content:center;}
+  .foot .btn-ghost{color:var(--snow);border-color:var(--hair-d);}
+  .foot .btn-ghost:hover{background:rgba(255,255,255,.06);}
+  .foot .btn-snow{background:var(--snow);color:var(--night);}
+  .footbar{
+    max-width:var(--maxw);margin:70px auto 0;padding:26px 28px 0;
+    border-top:1px solid var(--hair-d-soft);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:13px;color:var(--snow-2);
+  }
+  .footbar a:hover{color:var(--snow);}
+
+  /* copy-email toast */
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);
+    background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;
+    font-size:14px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:300;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    .reveal{opacity:1;transform:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
 </head>
-
 <body>
-  <a class="skip-link" href="#work">Skip to work</a>
+<a href="#work" class="skip">Skip to work</a>
 
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="/" aria-label="Jamie Lewis, home">
-        <span class="dot" aria-hidden="true"></span> Jamie Lewis
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a class="nav-link ul" href="#work">Work</a>
-        <a class="nav-link ul" href="#about">About</a>
-        <a class="nav-link ul" href="#contact">Contact</a>
-      </nav>
-      <a class="btn btn-cta" href="#contact">Get in touch</a>
-    </div>
-  </header>
-
-  <main id="top">
-    <div class="fade-zone">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-mesh" style="background: radial-gradient(circle at 32% 32%, #ffd6a5 0%, #ff9e7a 26%, rgba(255,158,122,0) 62%), radial-gradient(circle at 70% 60%, #b9c6ff 0%, rgba(185,198,255,0) 55%);"></div>
-      <div class="container hero-inner">
-        <p class="eyebrow reveal">Jamie Lewis — Product Design Lead</p>
-        <h1 class="reveal" data-delay="1">Product design across <span class="serif-accent">fintech</span> &amp; <span class="serif-accent">energy</span>.</h1>
-        <p class="lede reveal" data-delay="2">10+ years turning complex, regulated problems into products people trust — 0-to-1 and 0-to-scale, B2B and B2C. Currently leading design at POWWR.</p>
-        <div class="hero-cta reveal" data-delay="2">
-          <a class="btn btn-primary" href="#work">
-            View work
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-          </a>
-          <button class="btn btn-ghost" type="button" data-copy-email="post.jwl@gmail.com">
-            <span class="btn-label">Copy email</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          </button>
-        </div>
-        <div class="keywords reveal" data-delay="3" aria-label="Focus areas">
-          <span class="kw">Fintech</span>
-          <span class="kw">Energy &amp; Utilities</span>
-          <span class="kw">B2B</span>
-          <span class="kw">B2C</span>
-          <span class="kw">0-to-1</span>
-          <span class="kw">Design Systems</span>
-          <span class="kw">Team Leadership</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORK -->
-    <section class="section theme-vars-dark" id="work">
-      <div class="container">
-        <div class="section-head reveal">
-          <h2>Selected work</h2>
-          <p class="meta">Four case studies · fintech &amp; energy · 2019–2026</p>
-        </div>
-
-        <div class="work-grid two stagger">
-          <!-- POWWR -->
-          <a class="work-card reveal" href="work/powwr/">
-            <div class="work-media">
-              <span class="work-tag">Energy · B2B SaaS</span>
-              <div class="work-art" style="background: radial-gradient(80% 120% at 15% 10%, #7be0c0 0%, rgba(123,224,192,0) 45%), radial-gradient(90% 100% at 88% 28%, #f4c95d 0%, rgba(244,201,93,0) 42%), linear-gradient(135deg, #0e6b57, #0a3f36);"></div>
-              <span class="client-mark">POWWR</span>
-            </div>
-            <div class="work-info">
-              <div>
-                <h3>Rebuilding the broker energy-quoting platform</h3>
-                <p class="role">Design Lead · 0-to-1 · 2023–now</p>
-                <div class="tags"><span>Product strategy</span><span>Design system</span><span>Research</span></div>
-              </div>
-              <span class="work-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-            </div>
-          </a>
-
-          <!-- Vodafone -->
-          <a class="work-card reveal" data-delay="1" href="work/vodafone/">
-            <div class="work-media">
-              <span class="work-tag">Telecoms · B2C</span>
-              <div class="work-art" style="background: radial-gradient(80% 120% at 20% 15%, #ff6a5c 0%, rgba(255,106,92,0) 45%), radial-gradient(90% 100% at 85% 22%, #ffb199 0%, rgba(255,177,153,0) 42%), linear-gradient(135deg, #e60000, #7d0d16);"></div>
-              <span class="client-mark">Vodafone</span>
-            </div>
-            <div class="work-info">
-              <div>
-                <h3>A unified self-service app for 20M+ customers</h3>
-                <p class="role">Senior Product Designer · 2020–2022</p>
-                <div class="tags"><span>Mobile</span><span>Service design</span><span>Accessibility</span></div>
-              </div>
-              <span class="work-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-            </div>
-          </a>
-
-          <!-- ClearScore -->
-          <a class="work-card reveal" href="work/clearscore/">
-            <div class="work-media">
-              <span class="work-tag">Fintech · B2C</span>
-              <div class="work-art" style="background: radial-gradient(80% 120% at 18% 12%, #7ef0d0 0%, rgba(126,240,208,0) 45%), radial-gradient(90% 100% at 88% 25%, #6aa8ff 0%, rgba(106,168,255,0) 44%), linear-gradient(135deg, #0aa37a, #0b5cad);"></div>
-              <span class="client-mark">ClearScore</span>
-            </div>
-            <div class="work-info">
-              <div>
-                <h3>Turning credit scores into confident decisions</h3>
-                <p class="role">Senior Product Designer · 2018–2020</p>
-                <div class="tags"><span>Growth</span><span>Data viz</span><span>Experimentation</span></div>
-              </div>
-              <span class="work-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-            </div>
-          </a>
-
-          <!-- OANDA -->
-          <a class="work-card reveal" data-delay="1" href="work/oanda/">
-            <div class="work-media">
-              <span class="work-tag">Fintech · Trading</span>
-              <div class="work-art" style="background: radial-gradient(80% 120% at 20% 15%, #6fb1ff 0%, rgba(111,177,255,0) 45%), radial-gradient(90% 100% at 85% 25%, #3de0ff 0%, rgba(61,224,255,0) 40%), linear-gradient(135deg, #0a2f6e, #04173a);"></div>
-              <span class="client-mark">OANDA</span>
-            </div>
-            <div class="work-info">
-              <div>
-                <h3>Simplifying FX trading for first-time investors</h3>
-                <p class="role">Product Designer · 2016–2018</p>
-                <div class="tags"><span>0-to-1</span><span>Onboarding</span><span>Trust &amp; safety</span></div>
-              </div>
-              <span class="work-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-    </div><!-- /.fade-zone -->
-
-    <div class="dark-zone">
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <p class="about-lead reveal">Senior enough to set the strategy. Hands-on enough to ship it.</p>
-        <div class="about-body reveal" data-delay="1">
-          <p>I'm a product design lead focused on regulated, high-stakes categories — money and energy — where trust and clarity decide whether a product succeeds. I've built and led teams, stood up design systems from zero, and partnered with product and engineering to take ideas from first sketch to millions of users.</p>
-          <p>My work spans the 50/50 line between fintech and utilities: credit and trading products that make risk understandable, and B2B energy platforms that make complex buying decisions fast.</p>
-          <div class="stat-row">
-            <div class="stat"><div class="n">10+</div><div class="l">years designing products</div></div>
-            <div class="stat"><div class="n">4</div><div class="l">industries shipped in</div></div>
-            <div class="stat"><div class="n">20M+</div><div class="l">users reached</div></div>
-          </div>
-          <div class="logos" aria-label="Companies I've worked with">
-            <span>POWWR</span><span>Vodafone</span><span>ClearScore</span><span>OANDA</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section contact" id="contact">
-      <div class="container narrow">
-        <h2 class="reveal">Let's build something worth shipping.</h2>
-        <p class="lede reveal" data-delay="1">Open to product design leadership roles. The quickest way to reach me is email.</p>
-        <div class="contact-actions reveal" data-delay="2">
-          <button class="btn btn-primary" type="button" data-copy-email="post.jwl@gmail.com">
-            <span class="btn-label">Copy email</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-          </button>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/uxjay/" target="_blank" rel="noopener">
-            LinkedIn
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-    </div><!-- /.dark-zone -->
-  </main>
-
-  <footer class="site-footer dark-zone">
-    <div class="container footer-inner">
-      <small>© <span id="year">2026</span> Jamie Lewis · Product Design Lead</small>
-      <nav class="footer-links" aria-label="Footer">
-        <a class="ul" href="https://www.linkedin.com/in/uxjay/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="ul" href="https://read.cv/jamielewis" target="_blank" rel="noopener">read.cv</a>
-        <a class="ul" href="#top">Back to top ↑</a>
-      </nav>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast" role="status" aria-live="polite">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-    <span class="toast-msg">Copied</span>
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap row">
+    <a href="/" class="brand"><span class="dot"></span> Jamie Lewis</a>
+    <nav class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-orange">Get in touch</a>
   </div>
+</header>
 
-  <script src="assets/js/main.js" defer></script>
+<main>
+<!-- ============ HERO (light) ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Jamie Lewis — Product Design Lead</p>
+      <h1 class="display">Product design across <em>fintech</em> &amp; <em>energy</em>.</h1>
+      <p class="lede">10+ years turning complex, regulated problems into products people trust — <b>0-to-1 and 0-to-scale, B2B and B2C</b>. Currently leading design at POWWR.</p>
+      <div class="cta-row">
+        <a href="#work" class="btn btn-orange">View work ↓</a>
+        <button class="btn btn-ghost" data-copy="jamie@jamielewis.design">Copy email ⧉</button>
+      </div>
+      <div class="chips">
+        <span class="chip accent">Fintech</span>
+        <span class="chip accent">Energy &amp; Utilities</span>
+        <span class="chip">B2B</span>
+        <span class="chip">B2C</span>
+        <span class="chip">0-to-1</span>
+        <span class="chip">Design Systems</span>
+        <span class="chip">Team Leadership</span>
+      </div>
+    </div>
+
+    <!-- Abstract product surface. Swap for a real product shot or portrait when ready. -->
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#EFEEEA"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="500" fill="url(#hg)"/>
+        <!-- device card -->
+        <rect x="46" y="70" width="308" height="360" rx="18" fill="#fff" stroke="#e6e4df"/>
+        <rect x="70" y="98" width="120" height="12" rx="6" fill="#1a1a1a"/>
+        <rect x="70" y="124" width="200" height="8" rx="4" fill="#d9d7d2"/>
+        <!-- mini chart -->
+        <rect x="70" y="156" width="260" height="120" rx="10" fill="#0C0C0D"/>
+        <polyline points="86,246 122,214 158,228 194,188 230,206 266,168 302,196"
+          fill="none" stroke="#FF4A17" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="302" cy="196" r="4.5" fill="#FF4A17"/>
+        <!-- stat tiles -->
+        <rect x="70" y="292" width="80" height="58" rx="10" fill="#F2F1ED"/>
+        <rect x="160" y="292" width="80" height="58" rx="10" fill="#F2F1ED"/>
+        <rect x="250" y="292" width="80" height="58" rx="10" fill="#F2F1ED"/>
+        <rect x="82" y="306" width="34" height="18" rx="4" fill="#1a1a1a"/>
+        <rect x="82" y="330" width="52" height="6" rx="3" fill="#c9c7c2"/>
+        <rect x="172" y="306" width="34" height="18" rx="4" fill="#1a1a1a"/>
+        <rect x="172" y="330" width="52" height="6" rx="3" fill="#c9c7c2"/>
+        <rect x="262" y="306" width="34" height="18" rx="4" fill="#FF4A17"/>
+        <rect x="262" y="330" width="52" height="6" rx="3" fill="#c9c7c2"/>
+        <rect x="70" y="366" width="260" height="44" rx="10" fill="#141414"/>
+        <rect x="90" y="382" width="120" height="12" rx="6" fill="#fff"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND WALL ("I transform brands" analog) ============ -->
+<section class="wall reveal">
+  <div class="wrap wall-grid">
+    <div class="logos">
+      <div class="logo-cell"><span>POWWR</span></div>
+      <div class="logo-cell"><span>Vodafone</span></div>
+      <div class="logo-cell"><span>ClearScore</span></div>
+      <div class="logo-cell"><span>OANDA</span></div>
+    </div>
+    <div>
+      <h2 class="display">I shape products people trust.</h2>
+      <p>From regulated fintech to national energy platforms — I define, design and ship the products where clarity and trust decide whether people stay. A 50/50 split between money and utilities, 0-to-1 to millions of users.</p>
+      <div class="cta-row"><a href="#work" class="btn btn-orange">See the work →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT WORK (dark) ============ -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="work-head reveal">
+      <h2 class="display">Recent work</h2>
+      <span class="meta">Four case studies · fintech &amp; energy · 2016–2026</span>
+    </div>
+
+    <div class="cards">
+      <!-- POWWR -->
+      <a class="card reveal" href="/powwr.html">
+        <div class="banner">
+          <span class="tag">Energy · B2B SaaS</span>
+          <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="p1" cx="78%" cy="24%" r="70%">
+              <stop offset="0" stop-color="#1b4a6b"/><stop offset="100%" stop-color="#00253E"/>
+            </radialGradient></defs>
+            <rect width="640" height="320" fill="url(#p1)"/>
+            <circle cx="560" cy="60" r="8" fill="#FFAD21"/>
+            <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle"
+              font-family="Archivo,sans-serif" font-weight="800" font-size="78"
+              letter-spacing="4" fill="#ffffff">POWWR</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Rebuilding the broker &amp; supplier energy platform</h3>
+          <p class="card-role">Design Lead · 0-to-1 · 2023–now</p>
+          <p class="card-impact">Cut quote-to-contract time by <b>60%</b> across the broker journey.</p>
+          <div class="card-tags"><span>Product strategy</span><span>Design system</span><span>Research</span></div>
+        </div>
+      </a>
+
+      <!-- Vodafone -->
+      <a class="card reveal" href="/vodafone.html">
+        <div class="banner">
+          <span class="tag">Telecoms · B2C</span>
+          <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="v1" cx="28%" cy="26%" r="80%">
+              <stop offset="0" stop-color="#ff3b30"/><stop offset="100%" stop-color="#C20000"/>
+            </radialGradient></defs>
+            <rect width="640" height="320" fill="url(#v1)"/>
+            <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle"
+              font-family="Archivo,sans-serif" font-weight="700" font-size="64"
+              letter-spacing="-1" fill="#ffffff">Vodafone</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>A unified self-serve app for 40M+ customers</h3>
+          <p class="card-role">Senior Product Designer · 2020–2022</p>
+          <p class="card-impact">Lifted task completion to <b>92%</b> and cut support calls sharply.</p>
+          <div class="card-tags"><span>Mobile</span><span>Service design</span><span>Accessibility</span></div>
+        </div>
+      </a>
+
+      <!-- ClearScore -->
+      <a class="card reveal" href="/clearscore.html">
+        <div class="banner">
+          <span class="tag">Fintech · B2C</span>
+          <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="c1" cx="24%" cy="30%" r="85%">
+              <stop offset="0" stop-color="#16C9B6"/><stop offset="100%" stop-color="#0B3B45"/>
+            </radialGradient></defs>
+            <rect width="640" height="320" fill="url(#c1)"/>
+            <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle"
+              font-family="Archivo,sans-serif" font-weight="700" font-size="58"
+              letter-spacing="-1" fill="#ffffff">ClearScore</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Making credit scores make sense</h3>
+          <p class="card-role">Senior Product Designer · 2018–2020</p>
+          <p class="card-impact"><b>+28%</b> activation from a redesigned score-first onboarding.</p>
+          <div class="card-tags"><span>Growth</span><span>Data viz</span><span>Experimentation</span></div>
+        </div>
+      </a>
+
+      <!-- OANDA -->
+      <a class="card reveal" href="/oanda.html">
+        <div class="banner">
+          <span class="tag">Fintech · Trading</span>
+          <svg viewBox="0 0 640 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="o1" cx="74%" cy="28%" r="80%">
+              <stop offset="0" stop-color="#1B4DA0"/><stop offset="100%" stop-color="#0A2540"/>
+            </radialGradient></defs>
+            <rect width="640" height="320" fill="url(#o1)"/>
+            <circle cx="92" cy="250" r="7" fill="#C9A227"/>
+            <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle"
+              font-family="Archivo,sans-serif" font-weight="800" font-size="72"
+              letter-spacing="3" fill="#ffffff">OANDA</text>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Making FX trading legible for first-timers</h3>
+          <p class="card-role">Product Designer · 2016–2018</p>
+          <p class="card-impact"><b>2.1×</b> more first trades after a rebuilt onboarding flow.</p>
+          <div class="card-tags"><span>0-to-1</span><span>Onboarding</span><span>Trust &amp; safety</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT / IMPACT (light) ============ -->
+<section class="about" id="about">
+  <div class="wrap about-grid reveal">
+    <h2 class="display">Senior enough to set the strategy. Hands-on enough to ship it.</h2>
+    <div>
+      <p>I'm a product design lead focused on regulated, high-stakes categories — money and energy — where trust and clarity decide whether a product succeeds. I've built and led teams, stood up design systems from zero, and partnered with product and engineering to take ideas from first sketch to millions of users.</p>
+      <p>My work spans the 50/50 line between fintech and utilities: credit and trading products that make risk understandable, and B2B energy platforms that make complex buying decisions fast.</p>
+      <div class="stats">
+        <div class="stat"><div class="n accent">10+</div><div class="l">years designing products</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">industries shipped in</div></div>
+        <div class="stat"><div class="n">20M+</div><div class="l">users reached</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FOOTER (dark) ============ -->
+<section class="foot" id="contact">
+  <div class="wrap">
+    <h2 class="display">Let's build something worth shipping.</h2>
+    <p>Open to product design leadership roles. The quickest way to reach me is email.</p>
+    <div class="cta-row">
+      <button class="btn btn-snow" data-copy="jamie@jamielewis.design">Copy email ⧉</button>
+      <a href="https://linkedin.com/in/jamielewis" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="footbar">
+    <span>© 2026 Jamie Lewis · Product Design Lead</span>
+    <span><a href="https://linkedin.com/in/jamielewis" target="_blank" rel="noopener">LinkedIn</a> &nbsp;·&nbsp; <a href="#top">Back to top ↑</a></span>
+  </div>
+</section>
+</main>
+
+<div class="toast" id="toast">Email copied</div>
+
+<script>
+  // copy-email (real clipboard, not mailto)
+  const toast=document.getElementById('toast');
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+      const val=btn.getAttribute('data-copy');
+      try{await navigator.clipboard.writeText(val);}
+      catch(e){const t=document.createElement('textarea');t.value=val;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+      toast.textContent=val+' copied';
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'),1800);
+    });
+  });
+
+  // scroll reveal
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
