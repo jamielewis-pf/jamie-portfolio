@@ -124,32 +124,22 @@
   .btn-dark{background:var(--ink);color:var(--paper);}
   .btn-dark:hover{background:#000;}
   @media(max-width:720px){.navlinks{display:none;}}
-  /* ---------- hero ---------- */
-  .hero{padding:64px 0 30px;}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end;}
+  /* ---------- hero (dark) ---------- */
+  .hero{background:var(--night);color:var(--snow);padding:92px 0 104px;}
   .hero h1{
-    font-size:clamp(46px,7.2vw,92px);
-    max-width:14ch;margin:18px 0 0;
+    font-size:clamp(31px,4.7vw,48px);line-height:1.08;letter-spacing:-.02em;
+    max-width:900px;margin:0;color:var(--snow);
   }
-  .hero h1 em{font-style:italic;font-weight:700;}
   .hero .lede{
-    font-size:clamp(17px,2vw,20px);color:var(--ink-2);
-    max-width:46ch;margin:26px 0 0;line-height:1.5;
+    font-size:clamp(16px,1.5vw,18px);color:var(--snow-2);
+    max-width:64ch;margin:24px 0 0;line-height:1.55;
   }
-  .hero .lede b{color:var(--ink);font-weight:600;}
-  .cta-row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;}
+  .hero .lede b{color:var(--snow);font-weight:600;}
+  .cta-row{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;}
   .cta-row .btn{padding:14px 22px;font-size:15px;}
-  /* hero visual — abstract product surface (swap for a real product/portrait shot) */
-  .hero-visual{
-    aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;
-    border:1px solid var(--hair);background:#fff;
-    box-shadow:0 30px 60px -30px rgba(20,20,20,.28);
-  }
-  .hero-visual svg{width:100%;height:100%;}
-  @media(max-width:860px){
-    .hero-grid{grid-template-columns:1fr;gap:34px;}
-    .hero-visual{max-width:420px;order:-1;}
-  }
+  .hero .btn-ghost{color:var(--snow);border-color:var(--hair-d);}
+  .hero .btn-ghost:hover{background:rgba(255,255,255,.06);}
+  @media(max-width:600px){.hero{padding:64px 0 76px;}}
   /* keyword chips */
   .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px;
     border-top:1px solid var(--hair);padding-top:26px;}
@@ -300,58 +290,14 @@
   </div>
 </header>
 <main>
-<!-- ============ HERO (light) ============ -->
+<!-- ============ HERO (dark) ============ -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Jamie Lewis — Product Design Lead</p>
-      <h1 class="display">Product design across <em>fintech</em> &amp; <em>energy</em>.</h1>
-      <p class="lede">10+ years turning complex, regulated problems into products people trust — <b>0-to-1 and 0-to-scale, B2B and B2C</b>. Currently leading design at POWWR.</p>
-      <div class="cta-row">
-        <a href="#work" class="btn btn-orange">View work ↓</a>
-        <button class="btn btn-ghost" data-copy="jamie@jamielewis.design">Copy email ⧉</button>
-      </div>
-      <div class="chips">
-        <span class="chip accent">Fintech</span>
-        <span class="chip accent">Energy &amp; Utilities</span>
-        <span class="chip">B2B</span>
-        <span class="chip">B2C</span>
-        <span class="chip">0-to-1</span>
-        <span class="chip">Design Systems</span>
-        <span class="chip">Team Leadership</span>
-      </div>
-    </div>
-    <!-- Abstract product surface. Swap for a real product shot or portrait when ready. -->
-    <div class="hero-visual" aria-hidden="true">
-      <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#EFEEEA"/>
-          </linearGradient>
-        </defs>
-        <rect width="400" height="500" fill="url(#hg)"/>
-        <!-- device card -->
-        <rect x="46" y="70" width="308" height="360" rx="18" fill="#fff" stroke="#e6e4df"/>
-        <rect x="70" y="98" width="120" height="12" rx="6" fill="#1a1a1a"/>
-        <rect x="70" y="124" width="200" height="8" rx="4" fill="#d9d7d2"/>
-        <!-- mini chart -->
-        <rect x="70" y="156" width="260" height="120" rx="10" fill="#0C0C0D"/>
-        <polyline points="86,246 122,214 158,228 194,188 230,206 266,168 302,196"
-          fill="none" stroke="#FF4A17" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="302" cy="196" r="4.5" fill="#FF4A17"/>
-        <!-- stat tiles -->
-        <rect x="70" y="292" width="80" height="58" rx="10" fill="#F2F1ED"/>
-        <rect x="160" y="292" width="80" height="58" rx="10" fill="#F2F1ED"/>
-        <rect x="250" y="292" width="80" height="58" rx="10" fill="#F2F1ED"/>
-        <rect x="82" y="306" width="34" height="18" rx="4" fill="#1a1a1a"/>
-        <rect x="82" y="330" width="52" height="6" rx="3" fill="#c9c7c2"/>
-        <rect x="172" y="306" width="34" height="18" rx="4" fill="#1a1a1a"/>
-        <rect x="172" y="330" width="52" height="6" rx="3" fill="#c9c7c2"/>
-        <rect x="262" y="306" width="34" height="18" rx="4" fill="#FF4A17"/>
-        <rect x="262" y="330" width="52" height="6" rx="3" fill="#c9c7c2"/>
-        <rect x="70" y="366" width="260" height="44" rx="10" fill="#141414"/>
-        <rect x="90" y="382" width="120" height="12" rx="6" fill="#fff"/>
-      </svg>
+  <div class="wrap">
+    <h1 class="display">An AI-powered product designer &amp; leader, rooted in experimentation, user research &amp; measurable outcomes.</h1>
+    <p class="lede">Working remotely from Frome, Somerset, with cross-sector experience spanning both in-house teams and agency environments across B2B and B2C.</p>
+    <div class="cta-row">
+      <a href="#work" class="btn btn-orange">Explore my work ↓</a>
+      <button class="btn btn-ghost" data-copy="Post.jwl@gmail.com">Copy email</button>
     </div>
   </div>
 </section>
@@ -546,7 +492,7 @@
     <h2 class="display">Let's build something worth shipping.</h2>
     <p>Open to product design leadership roles. The quickest way to reach me is email.</p>
     <div class="cta-row">
-      <button class="btn btn-snow" data-copy="jamie@jamielewis.design">Copy email ⧉</button>
+      <button class="btn btn-snow" data-copy="Post.jwl@gmail.com">Copy email ⧉</button>
       <a href="https://linkedin.com/in/jamielewis" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </div>
