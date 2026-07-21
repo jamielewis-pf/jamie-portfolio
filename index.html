@@ -212,7 +212,7 @@
   @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:30px;}}
   /* ---------- about me + experience (dark) ---------- */
   .dark{background:var(--night);color:var(--snow);}
-  .aboutme{padding:96px 0 20px;}
+  .aboutme{padding:96px 0 76px;}
   .aboutme .inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start;}
   .aboutme .lab{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--snow-2);}
   .aboutme h2{font-size:clamp(30px,4.2vw,48px);color:var(--snow);margin:14px 0 0;max-width:12ch;}
@@ -267,6 +267,18 @@
     .reveal{opacity:1;transform:none;}
     html{scroll-behavior:auto;}
   }
+  /* ---------- sliding-fill button hover (accessible inversions, AA-compliant) ---------- */
+  .btn{background-color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
+    transition:background-position .4s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
+  .btn-orange{background-image:linear-gradient(to right,#fff 0 50%,var(--orange) 50% 100%);color:#fff;}
+  .btn-orange:hover,.btn-orange:focus-visible{background-position:0 0;color:var(--ink);}
+  .btn-ghost{background-image:linear-gradient(to right,var(--ink) 0 50%,transparent 50% 100%);color:var(--ink);border:1px solid var(--hair);}
+  .btn-ghost:hover,.btn-ghost:focus-visible{background-position:0 0;color:var(--paper);border-color:var(--ink);}
+  .hero .btn-ghost,.foot .btn-ghost{background-image:linear-gradient(to right,var(--snow) 0 50%,transparent 50% 100%);color:var(--snow);border-color:var(--hair-d);}
+  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,.foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{background-position:0 0;color:var(--night);border-color:var(--snow);}
+  .foot .btn-snow{background-image:linear-gradient(to right,var(--orange-ink) 0 50%,var(--snow) 50% 100%);color:var(--night);}
+  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{background-position:0 0;color:#fff;}
+  @media(prefers-reduced-motion:reduce){.btn{transition:color .28s,border-color .28s;}}
 </style>
 </head>
 <body id="top">
@@ -490,15 +502,15 @@
 <section class="foot" id="contact">
   <div class="wrap">
     <h2 class="display">Let's build something worth shipping.</h2>
-    <p>Open to product design leadership roles. The quickest way to reach me is email.</p>
+    <p>Open to product design leadership roles.<br>The quickest way to reach me is email.</p>
     <div class="cta-row">
       <button class="btn btn-snow" data-copy="Post.jwl@gmail.com">Copy email ⧉</button>
-      <a href="https://linkedin.com/in/jamielewis" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/in/uxjay/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </div>
   <div class="footbar">
     <span>© 2026 Jamie Lewis · Product Design Lead</span>
-    <span><a href="https://linkedin.com/in/jamielewis" target="_blank" rel="noopener">LinkedIn</a> &nbsp;·&nbsp; <a href="#top">Back to top ↑</a></span>
+    <span><a href="https://www.linkedin.com/in/uxjay/" target="_blank" rel="noopener">LinkedIn</a> &nbsp;·&nbsp; <a href="#top">Back to top ↑</a></span>
   </div>
 </section>
 </main>

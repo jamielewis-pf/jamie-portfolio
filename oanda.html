@@ -119,6 +119,18 @@
   .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:#fff;
     padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:300;}
   .toast.show{opacity:1;transform:translate(-50%,0);}
+  /* ---------- sliding-fill button hover (accessible inversions, AA-compliant) ---------- */
+  .btn{background-color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
+    transition:background-position .4s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
+  .btn-orange{background-image:linear-gradient(to right,#fff 0 50%,var(--orange) 50% 100%);color:#fff;}
+  .btn-orange:hover,.btn-orange:focus-visible{background-position:0 0;color:var(--ink);}
+  .btn-ghost{background-image:linear-gradient(to right,var(--ink) 0 50%,transparent 50% 100%);color:var(--ink);border:1px solid var(--hair);}
+  .btn-ghost:hover,.btn-ghost:focus-visible{background-position:0 0;color:var(--paper);border-color:var(--ink);}
+  .hero .btn-ghost,.foot .btn-ghost{background-image:linear-gradient(to right,var(--snow) 0 50%,transparent 50% 100%);color:var(--snow);border-color:var(--hair-d);}
+  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,.foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{background-position:0 0;color:var(--night);border-color:var(--snow);}
+  .foot .btn-snow{background-image:linear-gradient(to right,var(--orange-ink) 0 50%,var(--snow) 50% 100%);color:var(--night);}
+  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{background-position:0 0;color:#fff;}
+  @media(prefers-reduced-motion:reduce){.btn{transition:color .28s,border-color .28s;}}
 </style>
 </head>
 <body id="top">
@@ -218,10 +230,10 @@
 <section class="foot" id="contact">
   <div class="wrap">
     <h2 class="display">Let's build something worth shipping.</h2>
-    <p>Open to product design leadership roles. The quickest way to reach me is email.</p>
+    <p>Open to product design leadership roles.<br>The quickest way to reach me is email.</p>
     <div class="cta-row">
-      <button class="btn btn-snow" data-copy="jamie@jamielewis.design">Copy email &#10233;</button>
-      <a href="https://linkedin.com/in/jamielewis" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+      <button class="btn btn-snow" data-copy="Post.jwl@gmail.com">Copy email &#10233;</button>
+      <a href="https://www.linkedin.com/in/uxjay/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn &#8599;</a>
     </div>
   </div>
   <div class="footbar">
