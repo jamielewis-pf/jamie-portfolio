@@ -1,10 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Jamie Lewis — Product Design Lead</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jamie Lewis — Product Design Lead (Fintech & Energy)</title>
+  <meta name="description" content="Jamie Lewis is a Product Design Lead with 10+ years across fintech and energy — 0-to-1 and 0-to-scale products, B2B and B2C. Case studies: POWWR, Vodafone, ClearScore, OANDA." />
+  <link rel="canonical" href="https://jamielewis.design/" />
+  <meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b0b0a" media="(prefers-color-scheme: dark)" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jamie Lewis — Product Design Lead" />
+  <meta property="og:description" content="Product design across fintech and energy. 0-to-1, B2B & B2C. Case studies: POWWR, Vodafone, ClearScore, OANDA." />
+  <meta property="og:url" content="https://jamielewis.design/" />
+  <meta property="og:image" content="https://jamielewis.design/assets/img/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;520;560;600;640;680&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+
+  <!-- No-flash theme (must run before paint) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (!t) { t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+
+  <!-- Structured data for AI/recruiter scanners -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jamie Lewis",
+    "jobTitle": "Product Design Lead",
+    "url": "https://jamielewis.design",
+    "email": "hello@jamielewis.design",
+    "knowsAbout": ["Product Design", "Design Leadership", "Fintech", "Energy", "Design Systems", "User Research", "0-to-1 Product"],
+    "sameAs": ["https://www.linkedin.com/in/jamielewis", "https://read.cv/jamielewis"]
+  }
+  </script>
 </head>
+
 <body>
-  <h1>Hello world — jamielewis.design is live</h1>
+  <a class="skip-link" href="#work">Skip to work</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Jamie Lewis, home">
+        <span class="dot" aria-hidden="true"></span> Jamie Lewis
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link ul" href="#work">Work</a>
+        <a class="nav-link ul" href="#about">About</a>
+        <a class="nav-link ul" href="#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-mesh" style="background: radial-gradient(circle at 32% 32%, #ffd6a5 0%, #ff9e7a 26%, rgba(255,158,122,0) 62%), radial-gradient(circle at 70% 60%, #b9c6ff 0%, rgba(185,198,255,0) 55%);"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow reveal">Jamie Lewis — Product Design Lead</p>
+        <h1 class="reveal" data-delay="1">Product design across <span class="serif-accent">fintech</span> &amp; <span class="serif-accent">energy</span>.</h1>
+        <p class="lede reveal" data-delay="2">10+ years turning complex, regulated problems into products people trust — 0-to-1 and 0-to-scale, B2B and B2C. Currently leading design at POWWR.</p>
+        <div class="hero-cta reveal" data-delay="2">
+          <a class="btn btn-primary" href="#work">
+            View work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+          <button class="btn btn-ghost" type="button" data-copy-email="hello@jamielewis.design">
+            <span class="btn-label">Copy email</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          </button>
+        </div>
+        <div class="keywords reveal" data-delay="3" aria-label="Focus areas">
+          <span class="kw">Fintech</span>
+          <span class="kw">Energy &amp; Utilities</span>
+          <span class="kw">B2B</span>
+          <span class="kw">B2C</span>
+          <span class="kw">0-to-1</span>
+          <span class="kw">Design Systems</span>
+          <span class="kw">Team Leadership</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Selected work</h2>
+          <p class="meta">Four case studies · fintech &amp; energy · 2019–2026</p>
+        </div>
+
+        <div class="work-grid two stagger">
+          <!-- POWWR -->
+          <a class="work-card reveal" href="work/powwr/">
+            <div class="work-media">
+              <span class="work-tag">Energy · B2B SaaS</span>
+              <div class="work-art" style="background: radial-gradient(80% 120% at 15% 10%, #7be0c0 0%, rgba(123,224,192,0) 45%), radial-gradient(90% 100% at 88% 28%, #f4c95d 0%, rgba(244,201,93,0) 42%), linear-gradient(135deg, #0e6b57, #0a3f36);"></div>
+              <span class="client-mark">POWWR</span>
+            </div>
+            <div class="work-info">
+              <div>
+                <h3>Rebuilding the broker energy-quoting platform</h3>
+                <p class="role">Design Lead · 0-to-1 · 2023–now</p>
+                <div class="tags"><span>Product strategy</span><span>Design system</span><span>Research</span></div>
+              </div>
+              <span class="work-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </div>
+          </a>
+
+          <!-- Vodafone -->
+          <a class="work-card reveal" data-delay="1" href="work/vodafone/">
+            <div class="work-media">
+              <span class="work-tag">Telecoms · B2C</span>
+              <div class="work-art" style="background: radial-gradient(80% 120% at 20% 15%, #ff6a5c 0%, rgba(255,106,92,0) 45%), radial-gradient(90% 100% at 85% 22%, #ffb199 0%, rgba(255,177,153,0) 42%), linear-gradient(135deg, #e60000, #7d0d16);"></div>
+              <span class="client-mark">Vodafone</span>
+            </div>
+            <div class="work-info">
+              <div>
+                <h3>A unified self-service app for 20M+ customers</h3>
+                <p class="role">Senior Product Designer · 2020–2022</p>
+                <div class="tags"><span>Mobile</span><span>Service design</span><span>Accessibility</span></div>
+              </div>
+              <span class="work-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </div>
+          </a>
+
+          <!-- ClearScore -->
+          <a class="work-card reveal" href="work/clearscore/">
+            <div class="work-media">
+              <span class="work-tag">Fintech · B2C</span>
+              <div class="work-art" style="background: radial-gradient(80% 120% at 18% 12%, #7ef0d0 0%, rgba(126,240,208,0) 45%), radial-gradient(90% 100% at 88% 25%, #6aa8ff 0%, rgba(106,168,255,0) 44%), linear-gradient(135deg, #0aa37a, #0b5cad);"></div>
+              <span class="client-mark">ClearScore</span>
+            </div>
+            <div class="work-info">
+              <div>
+                <h3>Turning credit scores into confident decisions</h3>
+                <p class="role">Senior Product Designer · 2018–2020</p>
+                <div class="tags"><span>Growth</span><span>Data viz</span><span>Experimentation</span></div>
+              </div>
+              <span class="work-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </div>
+          </a>
+
+          <!-- OANDA -->
+          <a class="work-card reveal" data-delay="1" href="work/oanda/">
+            <div class="work-media">
+              <span class="work-tag">Fintech · Trading</span>
+              <div class="work-art" style="background: radial-gradient(80% 120% at 20% 15%, #6fb1ff 0%, rgba(111,177,255,0) 45%), radial-gradient(90% 100% at 85% 25%, #3de0ff 0%, rgba(61,224,255,0) 40%), linear-gradient(135deg, #0a2f6e, #04173a);"></div>
+              <span class="client-mark">OANDA</span>
+            </div>
+            <div class="work-info">
+              <div>
+                <h3>Simplifying FX trading for first-time investors</h3>
+                <p class="role">Product Designer · 2016–2018</p>
+                <div class="tags"><span>0-to-1</span><span>Onboarding</span><span>Trust &amp; safety</span></div>
+              </div>
+              <span class="work-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <p class="about-lead reveal">Senior enough to set the strategy. Hands-on enough to ship it.</p>
+        <div class="about-body reveal" data-delay="1">
+          <p>I'm a product design lead focused on regulated, high-stakes categories — money and energy — where trust and clarity decide whether a product succeeds. I've built and led teams, stood up design systems from zero, and partnered with product and engineering to take ideas from first sketch to millions of users.</p>
+          <p>My work spans the 50/50 line between fintech and utilities: credit and trading products that make risk understandable, and B2B energy platforms that make complex buying decisions fast.</p>
+          <div class="stat-row">
+            <div class="stat"><div class="n">10+</div><div class="l">years designing products</div></div>
+            <div class="stat"><div class="n">4</div><div class="l">industries shipped in</div></div>
+            <div class="stat"><div class="n">20M+</div><div class="l">users reached</div></div>
+          </div>
+          <div class="logos" aria-label="Companies I've worked with">
+            <span>POWWR</span><span>Vodafone</span><span>ClearScore</span><span>OANDA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container narrow">
+        <h2 class="reveal">Let's build something worth shipping.</h2>
+        <p class="lede reveal" data-delay="1">Open to product design leadership roles. The quickest way to reach me is email.</p>
+        <div class="contact-actions reveal" data-delay="2">
+          <button class="btn btn-primary" type="button" data-copy-email="hello@jamielewis.design">
+            <span class="btn-label">Copy email</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          </button>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/jamielewis" target="_blank" rel="noopener">
+            LinkedIn
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year">2026</span> Jamie Lewis · Product Design Lead</small>
+      <nav class="footer-links" aria-label="Footer">
+        <a class="ul" href="https://www.linkedin.com/in/jamielewis" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="ul" href="https://read.cv/jamielewis" target="_blank" rel="noopener">read.cv</a>
+        <a class="ul" href="#top">Back to top ↑</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+    <span class="toast-msg">Copied</span>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
