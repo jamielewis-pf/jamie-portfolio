@@ -22,17 +22,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;520;560;600;640;680&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
 
-  <!-- No-flash theme (must run before paint) -->
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem("theme");
-        if (!t) { t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
-        document.documentElement.setAttribute("data-theme", t);
-      } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
-    })();
-  </script>
-
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
 
@@ -46,7 +35,7 @@
     "url": "https://jamielewis.design",
     "email": "hello@jamielewis.design",
     "knowsAbout": ["Product Design", "Design Leadership", "Fintech", "Energy", "Design Systems", "User Research", "0-to-1 Product"],
-    "sameAs": ["https://www.linkedin.com/in/jamielewis", "https://read.cv/jamielewis"]
+    "sameAs": ["https://www.linkedin.com/in/uxjay/", "https://read.cv/jamielewis"]
   }
   </script>
 </head>
@@ -63,15 +52,13 @@
         <a class="nav-link ul" href="#work">Work</a>
         <a class="nav-link ul" href="#about">About</a>
         <a class="nav-link ul" href="#contact">Contact</a>
-        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
-          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
-        </button>
       </nav>
+      <a class="btn btn-cta" href="#contact">Get in touch</a>
     </div>
   </header>
 
   <main id="top">
+    <div class="fade-zone">
     <!-- HERO -->
     <section class="hero">
       <div class="hero-mesh" style="background: radial-gradient(circle at 32% 32%, #ffd6a5 0%, #ff9e7a 26%, rgba(255,158,122,0) 62%), radial-gradient(circle at 70% 60%, #b9c6ff 0%, rgba(185,198,255,0) 55%);"></div>
@@ -84,7 +71,7 @@
             View work
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
           </a>
-          <button class="btn btn-ghost" type="button" data-copy-email="hello@jamielewis.design">
+          <button class="btn btn-ghost" type="button" data-copy-email="post.jwl@gmail.com">
             <span class="btn-label">Copy email</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
           </button>
@@ -102,7 +89,7 @@
     </section>
 
     <!-- WORK -->
-    <section class="section" id="work">
+    <section class="section theme-vars-dark" id="work">
       <div class="container">
         <div class="section-head reveal">
           <h2>Selected work</h2>
@@ -180,7 +167,9 @@
         </div>
       </div>
     </section>
+    </div><!-- /.fade-zone -->
 
+    <div class="dark-zone">
     <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container about-grid">
@@ -206,24 +195,25 @@
         <h2 class="reveal">Let's build something worth shipping.</h2>
         <p class="lede reveal" data-delay="1">Open to product design leadership roles. The quickest way to reach me is email.</p>
         <div class="contact-actions reveal" data-delay="2">
-          <button class="btn btn-primary" type="button" data-copy-email="hello@jamielewis.design">
+          <button class="btn btn-primary" type="button" data-copy-email="post.jwl@gmail.com">
             <span class="btn-label">Copy email</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
           </button>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/jamielewis" target="_blank" rel="noopener">
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/uxjay/" target="_blank" rel="noopener">
             LinkedIn
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
           </a>
         </div>
       </div>
     </section>
+    </div><!-- /.dark-zone -->
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer dark-zone">
     <div class="container footer-inner">
       <small>© <span id="year">2026</span> Jamie Lewis · Product Design Lead</small>
       <nav class="footer-links" aria-label="Footer">
-        <a class="ul" href="https://www.linkedin.com/in/jamielewis" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="ul" href="https://www.linkedin.com/in/uxjay/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="ul" href="https://read.cv/jamielewis" target="_blank" rel="noopener">read.cv</a>
         <a class="ul" href="#top">Back to top ↑</a>
       </nav>

@@ -1,23 +1,7 @@
 /* Jamie Lewis — portfolio interactions
-   Theme toggle, copy-email, scroll reveal, nav state. Vanilla, no deps. */
+   Copy-email, scroll reveal, nav state. Vanilla, no deps. */
 (function () {
   "use strict";
-  var root = document.documentElement;
-
-  /* ---- Theme toggle (initial theme set pre-paint in <head>) ---- */
-  function setTheme(mode) {
-    root.setAttribute("data-theme", mode);
-    try { localStorage.setItem("theme", mode); } catch (e) {}
-    var btn = document.querySelector(".theme-toggle");
-    if (btn) btn.setAttribute("aria-label", mode === "dark" ? "Switch to light mode" : "Switch to dark mode");
-  }
-  var toggle = document.querySelector(".theme-toggle");
-  if (toggle) {
-    toggle.addEventListener("click", function () {
-      var current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
-      setTheme(current === "dark" ? "light" : "dark");
-    });
-  }
 
   /* ---- Nav: background on scroll ---- */
   var header = document.querySelector(".site-header");
