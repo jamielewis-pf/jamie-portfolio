@@ -147,12 +147,13 @@
   /* ---------- testimonials (light) — "People notice how I work" ---------- */
   .tstm{padding:88px 0 96px;border-top:1px solid var(--hair-soft);}
   .tstm-lab{
-    font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;
-    letter-spacing:.08em;text-transform:uppercase;color:var(--orange-ink);
-    margin:0 0 34px;
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:42px;line-height:41px;letter-spacing:-.02em;
+    color:var(--ink);margin:0 0 34px;
   }
-  .tstm-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-  @media(max-width:760px){.tstm-grid{grid-template-columns:1fr;}}
+  @media(max-width:600px){.tstm-lab{font-size:34px;line-height:34px;}}
+  .tstm-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:22px;row-gap:12px;}
+  @media(max-width:760px){.tstm-grid{grid-template-columns:1fr;row-gap:12px;}}
   .tcard{
     background:#fff;border:1px solid var(--hair);border-radius:var(--r);
     padding:32px 32px 28px;display:flex;flex-direction:column;
@@ -166,21 +167,25 @@
   }
   .tcard .body{color:var(--ink-2);font-size:15px;line-height:1.62;margin:14px 0 0;}
   .tcard .who{
-    display:flex;align-items:center;gap:14px;margin-top:auto;
+    display:flex;align-items:center;gap:13px;margin-top:auto;
     padding-top:22px;border-top:1px solid var(--hair-soft);
   }
-  .tcard .who>span:first-child{margin-top:24px;} /* spacing guard if body short */
-  .who-top{margin-top:24px;}
-  .tcard .who img{width:54px;height:54px;flex:none;border-radius:50%;}
-  .tcard .who .nm{font-weight:600;font-size:15px;color:var(--ink);line-height:1.3;}
-  .tcard .who .rl{font-size:13px;color:var(--ink-2);}
+  .tcard .who img{width:60px;height:60px;flex:none;} /* composite already circular + badge; no clip */
+  .tcard .who .attr{font-size:15px;line-height:1.35;color:var(--ink-2);}
+  .tcard .who .nm{font-weight:700;color:var(--ink);}
   /* Framer-style pop-in: row 1 on arrival, row 2 on further scroll */
   .tcard{opacity:0;transform:translateY(26px) scale(.985);
-    transition:opacity .6s var(--ease),transform .6s var(--ease);}
+    transition:opacity .6s var(--ease),transform .6s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);}
   .tcard.in{opacity:1;transform:none;}
   .tcard:nth-child(2),.tcard:nth-child(4){transition-delay:.1s;}
+  .tcard.in:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 34px rgba(20,20,20,.12);
+    border-color:var(--hair);
+  }
   @media(prefers-reduced-motion:reduce){
-    .tcard{opacity:1;transform:none;transition:none;}
+    .tcard{opacity:1;transform:none;transition:box-shadow .3s var(--ease);}
+    .tcard.in:hover{transform:none;}
   }
   /* ---------- recent work (dark) ---------- */
   .work{background:var(--night);color:var(--snow);padding:96px 0 100px;}
@@ -376,10 +381,7 @@
         <p class="body">He not only produces fantastic designs, but his overall output is of the highest possible level. Jamie’s Figma files are by far the best I’ve worked with.</p>
         <figcaption class="who">
           <img src="ashley-gain.png" alt="Ashley Nibloe — GAIN Conversion" width="54" height="54" loading="lazy" />
-          <span>
-            <span class="nm">Ashley Nibloe</span><br>
-            <span class="rl">Senior Front End Developer · GAIN Conversion</span>
-          </span>
+          <span class="attr"><span class="nm">Ashley Nibloe</span> · GAIN Conversion</span>
         </figcaption>
       </figure>
       <!-- Isla -->
@@ -391,10 +393,7 @@
         <p class="body">He has set a high design standard, challenging data and briefs thoughtfully, which has greatly enhanced our team’s work. His ability to streamline processes has made a significant positive impact, and his feedback is always insightful.</p>
         <figcaption class="who">
           <img src="isla-gain.png" alt="Isla Ness — GAIN Conversion" width="54" height="54" loading="lazy" />
-          <span>
-            <span class="nm">Isla Ness</span><br>
-            <span class="rl">Senior Consultant · GAIN Conversion</span>
-          </span>
+          <span class="attr"><span class="nm">Isla Ness</span> · GAIN Conversion</span>
         </figcaption>
       </figure>
       <!-- Bridget -->
@@ -406,10 +405,7 @@
         <p class="body">He’s great at communicating what needs to be done and walking through processes. I really appreciate how he encourages ambition and new ideas — it’s motivating and helps me grow in my role.</p>
         <figcaption class="who">
           <img src="bridget-gain.png" alt="Bridget Jones — GAIN Conversion" width="54" height="54" loading="lazy" />
-          <span>
-            <span class="nm">Bridget Jones</span><br>
-            <span class="rl">Junior UI/UX Designer · GAIN Conversion</span>
-          </span>
+          <span class="attr"><span class="nm">Bridget Jones</span> · GAIN Conversion</span>
         </figcaption>
       </figure>
       <!-- Kyle -->
@@ -421,10 +417,7 @@
         <p class="body">He has always been quick to respond and very accommodating in terms of finding time in the team’s schedule to do what I need. He will always be willing to step in himself otherwise.</p>
         <figcaption class="who">
           <img src="kyle-gain.png" alt="Kyle Hearnshaw — GAIN Conversion" width="54" height="54" loading="lazy" />
-          <span>
-            <span class="nm">Kyle Hearnshaw</span><br>
-            <span class="rl">Director of Product &amp; Strategy · GAIN Conversion</span>
-          </span>
+          <span class="attr"><span class="nm">Kyle Hearnshaw</span> · GAIN Conversion</span>
         </figcaption>
       </figure>
     </div>
