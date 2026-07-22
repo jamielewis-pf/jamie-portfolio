@@ -167,10 +167,21 @@
   }
   .tcard .body{color:var(--ink-2);font-size:15px;line-height:1.62;margin:14px 0 0;}
   .tcard .who{
-    display:flex;align-items:center;gap:13px;margin-top:auto;
-    padding-top:22px;border-top:1px solid var(--hair-soft);
+    display:flex;align-items:center;gap:14px;margin-top:auto;
+    padding-top:30px;
   }
-  .tcard .who img{width:60px;height:60px;flex:none;} /* composite already circular + badge; no clip */
+  .pfp{position:relative;width:54px;height:54px;flex:none;}
+  .pfp>img{width:54px;height:54px;border-radius:50%;object-fit:cover;display:block;}
+  .pfp .gain{
+    position:absolute;right:-3px;bottom:-3px;
+    width:25px;height:25px;border-radius:50%;
+    background:#0F0F11;border:2px solid #fff;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .pfp .gain b{
+    font-family:'Archivo',sans-serif;font-weight:800;
+    font-size:7.5px;letter-spacing:.02em;color:#fff;line-height:1;
+  }
   .tcard .who .attr{font-size:15px;line-height:1.35;color:var(--ink-2);}
   .tcard .who .nm{font-weight:700;color:var(--ink);}
   /* Framer-style pop-in: row 1 on arrival, row 2 on further scroll */
@@ -380,7 +391,10 @@
         <blockquote class="headline">“Jamie is incredible at his job”</blockquote>
         <p class="body">He not only produces fantastic designs, but his overall output is of the highest possible level. Jamie’s Figma files are by far the best I’ve worked with.</p>
         <figcaption class="who">
-          <img src="ashley-gain.png" alt="Ashley Nibloe — GAIN Conversion" width="54" height="54" loading="lazy" />
+          <span class="pfp">
+            <img src="ashley.png" alt="Ashley Nibloe" width="54" height="54" loading="lazy" />
+            <span class="gain" aria-hidden="true"><b>GAIN</b></span>
+          </span>
           <span class="attr"><span class="nm">Ashley Nibloe</span> · GAIN Conversion</span>
         </figcaption>
       </figure>
@@ -392,7 +406,10 @@
         <blockquote class="headline">“Leadership with high standards”</blockquote>
         <p class="body">He has set a high design standard, challenging data and briefs thoughtfully, which has greatly enhanced our team’s work. His ability to streamline processes has made a significant positive impact, and his feedback is always insightful.</p>
         <figcaption class="who">
-          <img src="isla-gain.png" alt="Isla Ness — GAIN Conversion" width="54" height="54" loading="lazy" />
+          <span class="pfp">
+            <img src="isla.png" alt="Isla Ness" width="54" height="54" loading="lazy" />
+            <span class="gain" aria-hidden="true"><b>GAIN</b></span>
+          </span>
           <span class="attr"><span class="nm">Isla Ness</span> · GAIN Conversion</span>
         </figcaption>
       </figure>
@@ -404,7 +421,10 @@
         <blockquote class="headline">“Jamie is a great manager”</blockquote>
         <p class="body">He’s great at communicating what needs to be done and walking through processes. I really appreciate how he encourages ambition and new ideas — it’s motivating and helps me grow in my role.</p>
         <figcaption class="who">
-          <img src="bridget-gain.png" alt="Bridget Jones — GAIN Conversion" width="54" height="54" loading="lazy" />
+          <span class="pfp">
+            <img src="bridget.png" alt="Bridget Jones" width="54" height="54" loading="lazy" />
+            <span class="gain" aria-hidden="true"><b>GAIN</b></span>
+          </span>
           <span class="attr"><span class="nm">Bridget Jones</span> · GAIN Conversion</span>
         </figcaption>
       </figure>
@@ -416,7 +436,10 @@
         <blockquote class="headline">“Always willing to step in”</blockquote>
         <p class="body">He has always been quick to respond and very accommodating in terms of finding time in the team’s schedule to do what I need. He will always be willing to step in himself otherwise.</p>
         <figcaption class="who">
-          <img src="kyle-gain.png" alt="Kyle Hearnshaw — GAIN Conversion" width="54" height="54" loading="lazy" />
+          <span class="pfp">
+            <img src="kyle.png" alt="Kyle Hearnshaw" width="54" height="54" loading="lazy" />
+            <span class="gain" aria-hidden="true"><b>GAIN</b></span>
+          </span>
           <span class="attr"><span class="nm">Kyle Hearnshaw</span> · GAIN Conversion</span>
         </figcaption>
       </figure>
