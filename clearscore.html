@@ -65,10 +65,6 @@
     border-radius:999px;padding:11px 20px;transition:transform .18s var(--ease),background .18s;
     display:inline-flex;align-items:center;gap:8px;}
   .btn:active{transform:translateY(1px);}
-  .btn-orange{background:var(--orange);color:#fff;}
-  .btn-orange:hover{background:#ff5b2c;}
-  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover{background:rgba(20,20,20,.05);}
   @media(max-width:720px){.navlinks{display:none;}}
   .backrow{padding:26px 0 0;}
   .back{font-size:14px;color:var(--ink-2);display:inline-flex;gap:7px;align-items:center;}
@@ -119,18 +115,62 @@
   .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:#fff;
     padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:300;}
   .toast.show{opacity:1;transform:translate(-50%,0);}
-  /* ---------- sliding-fill button hover (accessible inversions, AA-compliant) ---------- */
-  .btn{background-color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
-    transition:background-position .4s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
-  .btn-orange{background-image:linear-gradient(to right,#fff 0 50%,var(--orange) 50% 100%);color:#fff;}
-  .btn-orange:hover,.btn-orange:focus-visible{background-position:0 0;color:var(--ink);}
-  .btn-ghost{background-image:linear-gradient(to right,var(--ink) 0 50%,transparent 50% 100%);color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover,.btn-ghost:focus-visible{background-position:0 0;color:var(--paper);border-color:var(--ink);}
-  .hero .btn-ghost,.foot .btn-ghost{background-image:linear-gradient(to right,var(--snow) 0 50%,transparent 50% 100%);color:var(--snow);border-color:var(--hair-d);}
-  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,.foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{background-position:0 0;color:var(--night);border-color:var(--snow);}
-  .foot .btn-snow{background-image:linear-gradient(to right,var(--orange-ink) 0 50%,var(--snow) 50% 100%);color:var(--night);}
-  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{background-position:0 0;color:#fff;}
-  @media(prefers-reduced-motion:reduce){.btn{transition:color .28s,border-color .28s;}}
+  /* ============================================================
+     BUTTON HOVER BEHAVIOUR — single source of truth
+     Primary: ::before wipes left→right (black fill, orange text/border
+     on hover), clipped by overflow:hidden + isolation on .btn so there's
+     no stray fill at rest and no lag after the cursor leaves.
+     Secondary: no fill — just a stroke colour change on hover.
+     ============================================================ */
+  .btn{position:relative;overflow:hidden;isolation:isolate;
+    transition:color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
+  .btn-orange{background:var(--orange);color:#fff;border:1px solid var(--orange);}
+  .btn-orange::before{content:"";position:absolute;inset:0;z-index:-1;background:#000;
+    transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .btn-orange:hover,.btn-orange:focus-visible{color:var(--orange);border-color:var(--orange);}
+  .btn-orange:hover::before,.btn-orange:focus-visible::before{transform:scaleX(1);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
+  .btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--ink);background:rgba(20,20,20,.04);}
+  .hero .btn-ghost,.foot .btn-ghost{color:var(--snow);border-color:var(--hair-d);background:transparent;}
+  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,
+  .foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{border-color:#fff;background:rgba(255,255,255,.06);}
+  .foot .btn-snow{background:var(--snow);color:var(--night);border:1px solid var(--snow);}
+  .foot .btn-snow::before{content:"";position:absolute;inset:0;z-index:-1;background:#000;
+    transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{color:var(--orange);border-color:var(--orange);}
+  .foot .btn-snow:hover::before,.foot .btn-snow:focus-visible::before{transform:scaleX(1);}
+  @media(prefers-reduced-motion:reduce){
+    .btn{transition:color .28s,border-color .28s;}
+    .btn-orange::before,.foot .btn-snow::before{transition:none;}
+  }
+  /* ---------- case-study accordions (no large section headers) ---------- */
+  .cs-sections{padding:54px 0 8px;}
+  .acc{border-top:1px solid var(--hair);}
+  .acc:last-of-type{border-bottom:1px solid var(--hair);}
+  .acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;
+    padding:26px 4px;user-select:none;transition:color .2s var(--ease);}
+  .acc summary::-webkit-details-marker{display:none;}
+  .acc summary:hover{color:var(--orange-ink);}
+  .acc summary:hover .acc-plus::before,.acc summary:hover .acc-plus::after{background:var(--orange-ink);}
+  .acc-ix{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange-ink);
+    letter-spacing:.05em;flex:none;width:26px;}
+  .acc-h{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(18px,2.1vw,22px);
+    letter-spacing:-.01em;color:var(--ink);}
+  .acc-plus{margin-left:auto;position:relative;width:16px;height:16px;flex:none;}
+  .acc-plus::before,.acc-plus::after{content:"";position:absolute;background:var(--ink-2);
+    transition:transform .3s var(--ease),opacity .3s var(--ease),background .2s;}
+  .acc-plus::before{top:7px;left:0;width:16px;height:2px;}
+  .acc-plus::after{left:7px;top:0;width:2px;height:16px;}
+  .acc[open] .acc-plus::after{transform:rotate(90deg);opacity:0;}
+  .acc-body{padding:0 4px 34px 48px;max-width:calc(var(--measure) + 48px);}
+  .acc-body p{color:var(--ink-2);margin:0;}
+  .acc-body p+p{margin-top:16px;}
+  .acc-body p b{color:var(--ink);font-weight:600;}
+  .acc-body .insight{margin-top:26px;}
+  .acc[open] .acc-body{animation:accIn .34s var(--ease);}
+  @keyframes accIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+  @media(max-width:600px){.acc-body{padding-left:4px;}.acc summary{gap:12px;}}
+  @media(prefers-reduced-motion:reduce){.acc[open] .acc-body{animation:none;}}
 </style>
 </head>
 <body id="top">
@@ -157,7 +197,7 @@
   <section class="cs-hero">
     <div class="wrap">
       <h1 class="visually-hidden">ClearScore — Recommendations that read as advice, not advertising</h1>
-      <p class="eyebrow">Product Design Lead · B2C · Fintech · 0-to-1 &rarr; Scale</p>
+      <p class="eyebrow">UI/UX Designer · B2C acquisition · Fintech · CRO</p>
       <div class="cs-banner"><img src="clearscore_banner.jpg" alt="ClearScore case study — Recommendations that read as advice, not advertising" /></div>
     </div>
   </section>
@@ -165,53 +205,50 @@
     <div class="wrap">
       <p class="lab">Impact at a glance</p>
       <div class="impact-grid">
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">increase in recommendation click-through</div></div>
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">uplift in approved applications</div></div>
-        <div class="metric"><div class="n"><span class="ph">[XX pt]</span></div><div class="l">improvement in trust / NPS score</div></div>
+        <div class="metric"><div class="n">+20%</div><div class="l">stronger hero performance from on-brand nature imagery</div></div>
+        <div class="metric"><div class="n">+12%</div><div class="l">uplift in homepage sign-ups from lender trust badges</div></div>
+        <div class="metric"><div class="n">+8%</div><div class="l">conversion gain from short, punchy copy over long</div></div>
       </div>
     </div>
   </section>
-  <section class="sec" id="context">
+    <section class="cs-sections">
     <div class="wrap">
-      <p class="kicker">Context</p>
-      <h2>Turning a free utility into a trusted guide</h2>
-      <p>ClearScore gives people free access to their credit score and report, then earns revenue by recommending credit products matched to their profile via Open Banking.</p>
-      <p>I led design on the personalised recommendations and credit-building journey — the part of the product that has to turn a free utility into a trusted financial guide without ever feeling like an upsell.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Challenge</p>
-      <h2>Advice, not advertising</h2>
-      <p>Users came to ClearScore to check a number, not to buy a credit card — so anything that felt like a sales pitch risked breaking the trust the whole business model depends on.</p>
-      <p>The challenge was <b>designing recommendations that felt like advice, not advertising</b>, while still driving the marketplace conversions that fund the free product.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Approach &amp; Process</p>
-      <h2>Confidence beat price</h2>
-      <p>Research started with a blunt question to users: “does this feel like it's for you, or for them?” That framing exposed which UI patterns read as helpful (contextual, score-linked explanations) versus which read as sales (generic banner ads). I redesigned the recommendation surface around eligibility transparency — showing users <b>why</b> a product matched their score before showing the product itself — and tested it against the incumbent banner-style layout with a live A/B split.</p>
-      <p>One insight drove the whole redesign: users trusted a recommendation more when they understood their own likelihood of approval than when they saw a lower headline rate.</p>
-      <div class="insight">
-        <div class="cap">Key insight</div>
-        <div class="big">Users trusted a recommendation more when they understood their odds of approval than when they saw a lower rate. <em>Confidence beat price.</em></div>
+    <details class="acc" id="context" open>
+      <summary><span class="acc-ix">01</span><span class="acc-h">Context</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>At GAIN Conversion I was the UI/UX designer optimising ClearScore&rsquo;s B2C acquisition funnel for credit brokerage, focused on the homepage hero and highest-traffic pages. I worked in a delivery pod with a PM, UX consultant, UI developer and QA.</p>
       </div>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Impact</p>
-      <h2>The more honest design also won commercially</h2>
-      <p>The eligibility-first layout outperformed the incumbent on both trust perception and marketplace conversion — a rare case where the more honest design also won commercially. Approved applications rose as users applied to products they were actually likely to get, rather than aspirational ones they'd bounce off.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Learnings &amp; Reflection</p>
-      <h2>Transparency is the highest-leverage lever</h2>
-      <p>Fintech design lives or dies on perceived motive. The interface has to constantly answer “who is this for?” before a user will act on it.</p>
-      <p>My reflection from this project: in trust-sensitive categories, <b>transparency isn't a compliance requirement bolted onto design — it's the highest-leverage design lever you have</b>.</p>
+    </details>
+    <details class="acc" id="challenge">
+      <summary><span class="acc-ix">02</span><span class="acc-h">Challenge</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>The brief was simple and unforgiving: lift sign-ups. Traffic was overwhelmingly <b>mobile</b>, the brand leaned on distinctive natural imagery, and every idea had to earn its place through a live 6&ndash;8 week experiment &mdash; no opinions, only results.</p>
+      </div>
+    </details>
+    <details class="acc" id="process">
+      <summary><span class="acc-ix">03</span><span class="acc-h">Process</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>I studied the traffic first, confirmed mobile dominance, and optimised every targeted hero <b>mobile-first</b>. We tested moving-image versus still backgrounds, and leaned into ClearScore&rsquo;s recognisable mountains, lakes and forests to evoke calm and reinforce brand. We ran experiments on button copy, H1/H2 wording, and added lender logo badges beneath the hero for trust.</p>
+        <p>When the UX consultant pushed wordy headlines, I pushed back &mdash; my read was that length would cost conversion. So we tested it.</p>
+        <div class="insight">
+          <div class="cap">Short vs long &mdash; tested, not assumed</div>
+          <div class="big">Explainers lost to vibes. <em>Short, motivational copy beat long, wordy copy by 8%.</em></div>
+        </div>
+      </div>
+    </details>
+    <details class="acc" id="impact">
+      <summary><span class="acc-ix">04</span><span class="acc-h">Impact</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>On-brand nature imagery outperformed image-less heroes by <b>20%</b>. Lender trust badges below the hero drove a <b>12% uplift</b> in homepage sign-ups. And the short-copy call I&rsquo;d argued for won by <b>8%</b> &mdash; instinct, then validated.</p>
+      </div>
+    </details>
+    <details class="acc" id="learnings">
+      <summary><span class="acc-ix">05</span><span class="acc-h">Learnings</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>The result I&rsquo;m proudest of wasn&rsquo;t a number &mdash; it was learning when to trust a design instinct and how to make it safe: voice the conviction, then let the test settle it.</p>
+        <p>On-brand emotion converts, trust signals belong close to the ask, and when the data says mobile, everything is mobile-first. Seniority, here, was the confidence to disagree and the humility to prove it.</p>
+      </div>
+    </details>
     </div>
   </section>
   <section class="next">
@@ -243,6 +280,10 @@
 </section>
 <div class="toast" id="toast">Email copied</div>
 <script>
+  // deep-link: open the accordion matching the URL hash
+  function openHash(){const h=location.hash.slice(1);if(!h)return;const el=document.getElementById(h);if(el&&el.tagName.toLowerCase()==='details'){el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}}
+  window.addEventListener('hashchange',openHash);openHash();
+
   const toast=document.getElementById('toast');
   document.querySelectorAll('[data-copy]').forEach(btn=>{
     btn.addEventListener('click',async()=>{

@@ -65,10 +65,6 @@
     border-radius:999px;padding:11px 20px;transition:transform .18s var(--ease),background .18s;
     display:inline-flex;align-items:center;gap:8px;}
   .btn:active{transform:translateY(1px);}
-  .btn-orange{background:var(--orange);color:#fff;}
-  .btn-orange:hover{background:#ff5b2c;}
-  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover{background:rgba(20,20,20,.05);}
   @media(max-width:720px){.navlinks{display:none;}}
   .backrow{padding:26px 0 0;}
   .back{font-size:14px;color:var(--ink-2);display:inline-flex;gap:7px;align-items:center;}
@@ -119,18 +115,62 @@
   .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:#fff;
     padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:300;}
   .toast.show{opacity:1;transform:translate(-50%,0);}
-  /* ---------- sliding-fill button hover (accessible inversions, AA-compliant) ---------- */
-  .btn{background-color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
-    transition:background-position .4s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
-  .btn-orange{background-image:linear-gradient(to right,#fff 0 50%,var(--orange) 50% 100%);color:#fff;}
-  .btn-orange:hover,.btn-orange:focus-visible{background-position:0 0;color:var(--ink);}
-  .btn-ghost{background-image:linear-gradient(to right,var(--ink) 0 50%,transparent 50% 100%);color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover,.btn-ghost:focus-visible{background-position:0 0;color:var(--paper);border-color:var(--ink);}
-  .hero .btn-ghost,.foot .btn-ghost{background-image:linear-gradient(to right,var(--snow) 0 50%,transparent 50% 100%);color:var(--snow);border-color:var(--hair-d);}
-  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,.foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{background-position:0 0;color:var(--night);border-color:var(--snow);}
-  .foot .btn-snow{background-image:linear-gradient(to right,var(--orange-ink) 0 50%,var(--snow) 50% 100%);color:var(--night);}
-  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{background-position:0 0;color:#fff;}
-  @media(prefers-reduced-motion:reduce){.btn{transition:color .28s,border-color .28s;}}
+  /* ============================================================
+     BUTTON HOVER BEHAVIOUR — single source of truth
+     Primary: ::before wipes left→right (black fill, orange text/border
+     on hover), clipped by overflow:hidden + isolation on .btn so there's
+     no stray fill at rest and no lag after the cursor leaves.
+     Secondary: no fill — just a stroke colour change on hover.
+     ============================================================ */
+  .btn{position:relative;overflow:hidden;isolation:isolate;
+    transition:color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
+  .btn-orange{background:var(--orange);color:#fff;border:1px solid var(--orange);}
+  .btn-orange::before{content:"";position:absolute;inset:0;z-index:-1;background:#000;
+    transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .btn-orange:hover,.btn-orange:focus-visible{color:var(--orange);border-color:var(--orange);}
+  .btn-orange:hover::before,.btn-orange:focus-visible::before{transform:scaleX(1);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
+  .btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--ink);background:rgba(20,20,20,.04);}
+  .hero .btn-ghost,.foot .btn-ghost{color:var(--snow);border-color:var(--hair-d);background:transparent;}
+  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,
+  .foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{border-color:#fff;background:rgba(255,255,255,.06);}
+  .foot .btn-snow{background:var(--snow);color:var(--night);border:1px solid var(--snow);}
+  .foot .btn-snow::before{content:"";position:absolute;inset:0;z-index:-1;background:#000;
+    transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{color:var(--orange);border-color:var(--orange);}
+  .foot .btn-snow:hover::before,.foot .btn-snow:focus-visible::before{transform:scaleX(1);}
+  @media(prefers-reduced-motion:reduce){
+    .btn{transition:color .28s,border-color .28s;}
+    .btn-orange::before,.foot .btn-snow::before{transition:none;}
+  }
+  /* ---------- case-study accordions (no large section headers) ---------- */
+  .cs-sections{padding:54px 0 8px;}
+  .acc{border-top:1px solid var(--hair);}
+  .acc:last-of-type{border-bottom:1px solid var(--hair);}
+  .acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;
+    padding:26px 4px;user-select:none;transition:color .2s var(--ease);}
+  .acc summary::-webkit-details-marker{display:none;}
+  .acc summary:hover{color:var(--orange-ink);}
+  .acc summary:hover .acc-plus::before,.acc summary:hover .acc-plus::after{background:var(--orange-ink);}
+  .acc-ix{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange-ink);
+    letter-spacing:.05em;flex:none;width:26px;}
+  .acc-h{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(18px,2.1vw,22px);
+    letter-spacing:-.01em;color:var(--ink);}
+  .acc-plus{margin-left:auto;position:relative;width:16px;height:16px;flex:none;}
+  .acc-plus::before,.acc-plus::after{content:"";position:absolute;background:var(--ink-2);
+    transition:transform .3s var(--ease),opacity .3s var(--ease),background .2s;}
+  .acc-plus::before{top:7px;left:0;width:16px;height:2px;}
+  .acc-plus::after{left:7px;top:0;width:2px;height:16px;}
+  .acc[open] .acc-plus::after{transform:rotate(90deg);opacity:0;}
+  .acc-body{padding:0 4px 34px 48px;max-width:calc(var(--measure) + 48px);}
+  .acc-body p{color:var(--ink-2);margin:0;}
+  .acc-body p+p{margin-top:16px;}
+  .acc-body p b{color:var(--ink);font-weight:600;}
+  .acc-body .insight{margin-top:26px;}
+  .acc[open] .acc-body{animation:accIn .34s var(--ease);}
+  @keyframes accIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+  @media(max-width:600px){.acc-body{padding-left:4px;}.acc summary{gap:12px;}}
+  @media(prefers-reduced-motion:reduce){.acc[open] .acc-body{animation:none;}}
 </style>
 </head>
 <body id="top">
@@ -157,7 +197,7 @@
   <section class="cs-hero">
     <div class="wrap">
       <h1 class="visually-hidden">Vodafone — My Vodafone — Making self-service the confident default over the call centre</h1>
-      <p class="eyebrow">Product Design Lead · B2C &amp; B2B2C · Scale · Telecoms</p>
+      <p class="eyebrow">Design Lead · B2B + B2C funnels · Telecoms · UK &amp; Germany</p>
       <div class="cs-banner"><img src="vodafone_banner.jpg" alt="Vodafone — My Vodafone case study — Making self-service the confident default over the call centre" /></div>
     </div>
   </section>
@@ -165,53 +205,50 @@
     <div class="wrap">
       <p class="lab">Impact at a glance</p>
       <div class="impact-grid">
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">reduction in call-centre contact rate</div></div>
-        <div class="metric"><div class="n"><span class="ph">[XX pts]</span></div><div class="l">uplift in self-service completion</div></div>
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">increase in app NPS</div></div>
+        <div class="metric"><div class="n">&times;2</div><div class="l">markets optimised in parallel &mdash; UK (B2C) and Germany (B2B)</div></div>
+        <div class="metric"><div class="n">2</div><div class="l">mobile contract funnels led simultaneously &mdash; business and consumer</div></div>
+        <div class="metric"><div class="n">EN&nbsp;&middot;&nbsp;DE</div><div class="l">research-led redesigns delivered in two languages</div></div>
       </div>
     </div>
   </section>
-  <section class="sec" id="context">
+    <section class="cs-sections">
     <div class="wrap">
-      <p class="kicker">Context</p>
-      <h2>Self-service at national scale</h2>
-      <p>Vodafone serves hundreds of millions of customers across mobile, broadband, and IoT, and is pushing beyond connectivity into digital services and financial products.</p>
-      <p>I worked on the My Vodafone app and self-service journeys — the primary channel customers use to manage their account, resolve issues, and upgrade — at a scale where even small friction compounds into enormous call-centre cost.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Challenge</p>
-      <h2>Flows confident enough to skip the phone call</h2>
-      <p>Customers were falling back to calling or visiting a store for tasks the app was technically capable of handling — upgrades, billing disputes, plan changes. Every one of those fallbacks cost far more to service than a self-resolved app journey, and each one signalled the app hadn't earned enough trust to be the default.</p>
-      <p>The challenge was <b>designing self-service flows confident enough that customers didn't feel the need to double-check with a human</b>.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Approach &amp; Process</p>
-      <h2>Prioritising design by cost of friction</h2>
-      <p>I mapped the full cross-channel journey — app, web, store, call centre — to find where customers were bouncing between channels rather than resolving in one. The clearest signal: customers abandoned self-service at the exact moment a flow asked them to make a decision without enough context (e.g. “which plan?” with no comparison in view). We redesigned those decision points first, prioritising by contact-centre volume so design effort mapped directly to cost reduction.</p>
-      <p>Every research output was distilled to one insight per slide — no raw transcripts, no sticky-note walls — so stakeholders across a large, matrixed organisation could act on it without a workshop debrief.</p>
-      <div class="insight">
-        <div class="cap">Key insight</div>
-        <div class="big">Customers abandoned self-service the moment a flow asked them to decide <em>without enough context to decide well.</em></div>
+    <details class="acc" id="context" open>
+      <summary><span class="acc-ix">01</span><span class="acc-h">Context</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>At GAIN Conversion I was design lead across two Vodafone engagements at once: optimising the business (B2B) and consumer (B2C) mobile contract funnels. I ran the German B2B track &mdash; drawing on prior experience designing for German markets and working German &mdash; while a colleague led UK B2C, with me overseeing both.</p>
       </div>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Impact</p>
-      <h2>A measurable cost saving, felt by customers</h2>
-      <p>Self-service completion rose across the redesigned journeys, and the corresponding call-centre contact rate for those same tasks dropped — a direct, measurable cost saving the business could point to, not just a usability improvement. App NPS moved in the same window, suggesting the shift was felt by customers, not just recorded in a dashboard.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Learnings &amp; Reflection</p>
-      <h2>Seniority is what you cut from the deck</h2>
-      <p>At Vodafone's scale, a single flow touches millions of people and multiple internal teams with competing priorities. The design skill that mattered most wasn't the interface work — it was <b>translating research into a one-sentence, one-number argument</b> that a commercial stakeholder could act on in a five-minute meeting.</p>
-      <p>Reflection: seniority in a large organisation is as much about what you cut from a deck as what you put in a design file.</p>
+    </details>
+    <details class="acc" id="challenge">
+      <summary><span class="acc-ix">02</span><span class="acc-h">Challenge</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>The two markets played by very different rules. Vodafone Germany&rsquo;s B2B funnel answered to pan-European brand standards and a <b>strict design system</b>, leaving little room for bold moves; the UK B2C funnel had more freedom.</p>
+        <p>Legacy page architecture and German-language UX copy were the first hurdles &mdash; and the contract itself capped us at two rounds of amends.</p>
+      </div>
+    </details>
+    <details class="acc" id="process">
+      <summary><span class="acc-ix">03</span><span class="acc-h">Process</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>We started with rigorous research: competitor analysis and touchpoint-by-touchpoint benchmarking of each Vodafone funnel against the market leaders in UK B2C and German B2B. I presented findings back to the client, then <b>facilitated creative ideation sessions across both teams</b>, moving from low-fidelity concepts to high-fidelity prototypes and a second round of client review &mdash; prioritising the highest-impact touchpoints in each funnel.</p>
+        <div class="insight">
+          <div class="cap">What the benchmarking showed</div>
+          <div class="big">The same brand converts differently by market. <em>Germany needed compliance-safe polish; the UK needed bolder, simpler decisions.</em></div>
+        </div>
+      </div>
+    </details>
+    <details class="acc" id="impact">
+      <summary><span class="acc-ix">04</span><span class="acc-h">Impact</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>We delivered research-led redesigns for <b>both funnels, in two languages</b>, under a tight fixed-scope contract &mdash; and pushed past the agreed amend rounds where it mattered to protect the outcome. The result was a genuinely happy client across both markets.</p>
+      </div>
+    </details>
+    <details class="acc" id="learnings">
+      <summary><span class="acc-ix">05</span><span class="acc-h">Learnings</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>Leading two markets in parallel taught me to calibrate ambition to constraint: where a rigid design system rules, you win with precision; where there&rsquo;s freedom, you win with boldness.</p>
+        <p>It also sharpened a judgement call every lead faces &mdash; when to hold the contractual line, and when to quietly go beyond it to keep a client relationship strong.</p>
+      </div>
+    </details>
     </div>
   </section>
   <section class="next">
@@ -243,6 +280,10 @@
 </section>
 <div class="toast" id="toast">Email copied</div>
 <script>
+  // deep-link: open the accordion matching the URL hash
+  function openHash(){const h=location.hash.slice(1);if(!h)return;const el=document.getElementById(h);if(el&&el.tagName.toLowerCase()==='details'){el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}}
+  window.addEventListener('hashchange',openHash);openHash();
+
   const toast=document.getElementById('toast');
   document.querySelectorAll('[data-copy]').forEach(btn=>{
     btn.addEventListener('click',async()=>{

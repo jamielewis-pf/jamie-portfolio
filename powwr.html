@@ -65,10 +65,6 @@
     border-radius:999px;padding:11px 20px;transition:transform .18s var(--ease),background .18s;
     display:inline-flex;align-items:center;gap:8px;}
   .btn:active{transform:translateY(1px);}
-  .btn-orange{background:var(--orange);color:#fff;}
-  .btn-orange:hover{background:#ff5b2c;}
-  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover{background:rgba(20,20,20,.05);}
   @media(max-width:720px){.navlinks{display:none;}}
   .backrow{padding:26px 0 0;}
   .back{font-size:14px;color:var(--ink-2);display:inline-flex;gap:7px;align-items:center;}
@@ -119,18 +115,62 @@
   .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:#fff;
     padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:300;}
   .toast.show{opacity:1;transform:translate(-50%,0);}
-  /* ---------- sliding-fill button hover (accessible inversions, AA-compliant) ---------- */
-  .btn{background-color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
-    transition:background-position .4s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
-  .btn-orange{background-image:linear-gradient(to right,#fff 0 50%,var(--orange) 50% 100%);color:#fff;}
-  .btn-orange:hover,.btn-orange:focus-visible{background-position:0 0;color:var(--ink);}
-  .btn-ghost{background-image:linear-gradient(to right,var(--ink) 0 50%,transparent 50% 100%);color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover,.btn-ghost:focus-visible{background-position:0 0;color:var(--paper);border-color:var(--ink);}
-  .hero .btn-ghost,.foot .btn-ghost{background-image:linear-gradient(to right,var(--snow) 0 50%,transparent 50% 100%);color:var(--snow);border-color:var(--hair-d);}
-  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,.foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{background-position:0 0;color:var(--night);border-color:var(--snow);}
-  .foot .btn-snow{background-image:linear-gradient(to right,var(--orange-ink) 0 50%,var(--snow) 50% 100%);color:var(--night);}
-  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{background-position:0 0;color:#fff;}
-  @media(prefers-reduced-motion:reduce){.btn{transition:color .28s,border-color .28s;}}
+  /* ============================================================
+     BUTTON HOVER BEHAVIOUR — single source of truth
+     Primary: ::before wipes left→right (black fill, orange text/border
+     on hover), clipped by overflow:hidden + isolation on .btn so there's
+     no stray fill at rest and no lag after the cursor leaves.
+     Secondary: no fill — just a stroke colour change on hover.
+     ============================================================ */
+  .btn{position:relative;overflow:hidden;isolation:isolate;
+    transition:color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
+  .btn-orange{background:var(--orange);color:#fff;border:1px solid var(--orange);}
+  .btn-orange::before{content:"";position:absolute;inset:0;z-index:-1;background:#000;
+    transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .btn-orange:hover,.btn-orange:focus-visible{color:var(--orange);border-color:var(--orange);}
+  .btn-orange:hover::before,.btn-orange:focus-visible::before{transform:scaleX(1);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
+  .btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--ink);background:rgba(20,20,20,.04);}
+  .hero .btn-ghost,.foot .btn-ghost{color:var(--snow);border-color:var(--hair-d);background:transparent;}
+  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,
+  .foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{border-color:#fff;background:rgba(255,255,255,.06);}
+  .foot .btn-snow{background:var(--snow);color:var(--night);border:1px solid var(--snow);}
+  .foot .btn-snow::before{content:"";position:absolute;inset:0;z-index:-1;background:#000;
+    transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{color:var(--orange);border-color:var(--orange);}
+  .foot .btn-snow:hover::before,.foot .btn-snow:focus-visible::before{transform:scaleX(1);}
+  @media(prefers-reduced-motion:reduce){
+    .btn{transition:color .28s,border-color .28s;}
+    .btn-orange::before,.foot .btn-snow::before{transition:none;}
+  }
+  /* ---------- case-study accordions (no large section headers) ---------- */
+  .cs-sections{padding:54px 0 8px;}
+  .acc{border-top:1px solid var(--hair);}
+  .acc:last-of-type{border-bottom:1px solid var(--hair);}
+  .acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;
+    padding:26px 4px;user-select:none;transition:color .2s var(--ease);}
+  .acc summary::-webkit-details-marker{display:none;}
+  .acc summary:hover{color:var(--orange-ink);}
+  .acc summary:hover .acc-plus::before,.acc summary:hover .acc-plus::after{background:var(--orange-ink);}
+  .acc-ix{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange-ink);
+    letter-spacing:.05em;flex:none;width:26px;}
+  .acc-h{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(18px,2.1vw,22px);
+    letter-spacing:-.01em;color:var(--ink);}
+  .acc-plus{margin-left:auto;position:relative;width:16px;height:16px;flex:none;}
+  .acc-plus::before,.acc-plus::after{content:"";position:absolute;background:var(--ink-2);
+    transition:transform .3s var(--ease),opacity .3s var(--ease),background .2s;}
+  .acc-plus::before{top:7px;left:0;width:16px;height:2px;}
+  .acc-plus::after{left:7px;top:0;width:2px;height:16px;}
+  .acc[open] .acc-plus::after{transform:rotate(90deg);opacity:0;}
+  .acc-body{padding:0 4px 34px 48px;max-width:calc(var(--measure) + 48px);}
+  .acc-body p{color:var(--ink-2);margin:0;}
+  .acc-body p+p{margin-top:16px;}
+  .acc-body p b{color:var(--ink);font-weight:600;}
+  .acc-body .insight{margin-top:26px;}
+  .acc[open] .acc-body{animation:accIn .34s var(--ease);}
+  @keyframes accIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+  @media(max-width:600px){.acc-body{padding-left:4px;}.acc summary{gap:12px;}}
+  @media(prefers-reduced-motion:reduce){.acc[open] .acc-body{animation:none;}}
 </style>
 </head>
 <body id="top">
@@ -165,53 +205,51 @@
     <div class="wrap">
       <p class="lab">Impact at a glance</p>
       <div class="impact-grid">
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">faster quote-to-contract time</div></div>
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">reduction in contract errors</div></div>
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">increase in broker platform adoption</div></div>
+        <div class="metric"><div class="n">7&rarr;2</div><div class="l">days from tender raised to contract signed &mdash; down from a 5&ndash;7 day average</div></div>
+        <div class="metric"><div class="n">3&times;</div><div class="l">roadmap velocity &mdash; a 12-month plan delivered in 4 months</div></div>
+        <div class="metric"><div class="n">7&times;</div><div class="l">faster prototyping &mdash; two weeks of work now takes two days</div></div>
       </div>
     </div>
   </section>
-  <section class="sec" id="context">
+    <section class="cs-sections">
     <div class="wrap">
-      <p class="kicker">Context</p>
-      <h2>The infrastructure layer behind deregulated energy</h2>
-      <p>POWWR is the infrastructure layer behind the UK and US deregulated energy market — the software that energy brokers and suppliers use to quote, contract, and manage commercial energy deals.</p>
-      <p>I led design on <b>Broker360</b>, the platform brokers use to run their entire sales cycle: comparing supplier prices, generating quotes, and pushing contracts to signature.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Challenge</p>
-      <h2>One connected journey, fast enough to be chosen</h2>
-      <p>Brokers were working across disconnected tools — spreadsheets for pricing, email for supplier chase-ups, PDFs for contracts — and losing deals to slower-moving competitors as a result. Quote turnaround was measured in hours, not minutes, and contract error rates were high enough to erode broker trust in the platform.</p>
-      <p>The mandate: <b>design a single connected journey from quote to signed contract</b>, fast enough that brokers would choose it over the spreadsheet they'd built themselves.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Approach &amp; Process</p>
-      <h2>Designing for skeptical, expert users</h2>
-      <p>I ran the discovery phase with brokers directly — shadowing live quoting sessions to see where they dropped out of the tool and back into email or Excel. That surfaced one clear insight: brokers didn't trust the platform's numbers enough to skip their own manual check. Every workflow decision after that was designed to close that trust gap — surfacing pricing provenance inline, not burying it in a tooltip.</p>
-      <p>From there: low-fidelity flows tested with a broker advisory panel, a working prototype validated against real quote scenarios, then a phased rollout starting with the highest-volume broker accounts so we could fix friction before it hit the full base.</p>
-      <div class="insight">
-        <div class="cap">Key insight</div>
-        <div class="big">Brokers didn't trust the platform's numbers enough to skip their own manual check. <em>Trust — not speed — was the real blocker.</em></div>
+    <details class="acc" id="context" open>
+      <summary><span class="acc-ix">01</span><span class="acc-h">Context</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>POWWR is the SaaS backbone of the UK deregulated energy retail market &mdash; the platform brokers and suppliers use to quote, contract and manage commercial energy deals. I lead design on the end-to-end retail product, serving two household-name UK energy suppliers alongside POWWR&rsquo;s own brokerage.</p>
       </div>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Impact</p>
-      <h2>Adopted as the default, not the fallback</h2>
-      <p>Brokers moved their full quoting workflow into Broker360 rather than treating it as a fallback tool. Quote turnaround dropped from hours to minutes, contract error rates fell sharply enough to change how the supplier-side team talked about the product internally, and broker retention on the platform improved — brokers stopped quietly running deals through legacy spreadsheets on the side.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Learnings &amp; Reflection</p>
-      <h2>Credibility is the harder unlock</h2>
-      <p>The biggest lesson wasn't about the interface — it was about <b>trust debt</b>. Brokers had been burned by inaccurate pricing tools before, and no amount of clean UI fixes that on its own. Design had to earn trust through transparency (showing the “why” behind a number) before it could earn adoption through speed.</p>
-      <p>That reframing changed how I approach B2B tools for skeptical, expert users more broadly: usability is necessary but not sufficient — credibility is the harder unlock.</p>
+    </details>
+    <details class="acc" id="challenge">
+      <summary><span class="acc-ix">02</span><span class="acc-h">Challenge</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>Deals were taking 5&ndash;7 days from tender to signature, and a 12-month-plus end-to-end build was simply too slow for the market. The board and CEO backed a strategic pivot: break the monolith into a <b>modular web application</b>, shipping the highest-value parts of the broker and supplier journeys first.</p>
+        <p>I was promoted to Product Design Lead to make that modular vision real &mdash; without design becoming the bottleneck between architecture and engineering.</p>
+      </div>
+    </details>
+    <details class="acc" id="process">
+      <summary><span class="acc-ix">03</span><span class="acc-h">Process</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>I moved the team to a <b>dual-track model</b>: an API-first build and a UI-first build developed in parallel and connected later, so product and engineering never wait on each other. I ran discovery directly with both major suppliers &mdash; remote and on-site &mdash; translating insight into validated requirements.</p>
+        <p>I also made the case for AI to the CEO, securing Claude seats for product; engineering followed. I was elected an <b>AI Champion</b> and now train product staff on AI-enhanced workflows &mdash; cutting prototyping from two weeks to two days and closing design-system gaps with a blend of AI speed and human craft to shorten developer handover.</p>
+        <div class="insight">
+          <div class="cap">The unlock</div>
+          <div class="big">Design&rsquo;s job wasn&rsquo;t to lead engineering or follow it. <em>Dual-track &mdash; API-first and UI-first in parallel &mdash; meant neither discipline ever blocked the other.</em></div>
+        </div>
+      </div>
+    </details>
+    <details class="acc" id="impact">
+      <summary><span class="acc-ix">04</span><span class="acc-h">Impact</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>The modular product cut end-to-end turnaround from an industry-standard 5&ndash;7 days to <b>two days</b>, tender to signed contract. AI-enhanced ways of working let us take a 12-month roadmap and deliver it in <b>four</b>. Prototyping that once took a fortnight now takes 48 hours &mdash; so we validate and iterate faster than the market moves.</p>
+      </div>
+    </details>
+    <details class="acc" id="learnings">
+      <summary><span class="acc-ix">05</span><span class="acc-h">Learnings</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>The hardest part of leading design in a deep-tech SaaS environment isn&rsquo;t the interface &mdash; it&rsquo;s the operating model. Getting design, architecture and engineering to move fast <em>together</em>, without one holding the others back, mattered more than any single screen.</p>
+        <p>AI is a force multiplier, not a shortcut: it compresses discovery and prototyping dramatically, but pixel-perfect craft and clean handover still need human judgement. This is live, ongoing work &mdash; and the model keeps proving itself.</p>
+      </div>
+    </details>
     </div>
   </section>
   <section class="next">
@@ -243,6 +281,10 @@
 </section>
 <div class="toast" id="toast">Email copied</div>
 <script>
+  // deep-link: open the accordion matching the URL hash
+  function openHash(){const h=location.hash.slice(1);if(!h)return;const el=document.getElementById(h);if(el&&el.tagName.toLowerCase()==='details'){el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}}
+  window.addEventListener('hashchange',openHash);openHash();
+
   const toast=document.getElementById('toast');
   document.querySelectorAll('[data-copy]').forEach(btn=>{
     btn.addEventListener('click',async()=>{

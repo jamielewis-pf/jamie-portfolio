@@ -65,10 +65,6 @@
     border-radius:999px;padding:11px 20px;transition:transform .18s var(--ease),background .18s;
     display:inline-flex;align-items:center;gap:8px;}
   .btn:active{transform:translateY(1px);}
-  .btn-orange{background:var(--orange);color:#fff;}
-  .btn-orange:hover{background:#ff5b2c;}
-  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover{background:rgba(20,20,20,.05);}
   @media(max-width:720px){.navlinks{display:none;}}
   .backrow{padding:26px 0 0;}
   .back{font-size:14px;color:var(--ink-2);display:inline-flex;gap:7px;align-items:center;}
@@ -119,18 +115,62 @@
   .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:#fff;
     padding:12px 20px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.3s var(--ease);z-index:300;}
   .toast.show{opacity:1;transform:translate(-50%,0);}
-  /* ---------- sliding-fill button hover (accessible inversions, AA-compliant) ---------- */
-  .btn{background-color:transparent;background-repeat:no-repeat;background-size:200% 100%;background-position:100% 0;
-    transition:background-position .4s var(--ease),color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
-  .btn-orange{background-image:linear-gradient(to right,#fff 0 50%,var(--orange) 50% 100%);color:#fff;}
-  .btn-orange:hover,.btn-orange:focus-visible{background-position:0 0;color:var(--ink);}
-  .btn-ghost{background-image:linear-gradient(to right,var(--ink) 0 50%,transparent 50% 100%);color:var(--ink);border:1px solid var(--hair);}
-  .btn-ghost:hover,.btn-ghost:focus-visible{background-position:0 0;color:var(--paper);border-color:var(--ink);}
-  .hero .btn-ghost,.foot .btn-ghost{background-image:linear-gradient(to right,var(--snow) 0 50%,transparent 50% 100%);color:var(--snow);border-color:var(--hair-d);}
-  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,.foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{background-position:0 0;color:var(--night);border-color:var(--snow);}
-  .foot .btn-snow{background-image:linear-gradient(to right,var(--orange-ink) 0 50%,var(--snow) 50% 100%);color:var(--night);}
-  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{background-position:0 0;color:#fff;}
-  @media(prefers-reduced-motion:reduce){.btn{transition:color .28s,border-color .28s;}}
+  /* ============================================================
+     BUTTON HOVER BEHAVIOUR — single source of truth
+     Primary: ::before wipes left→right (black fill, orange text/border
+     on hover), clipped by overflow:hidden + isolation on .btn so there's
+     no stray fill at rest and no lag after the cursor leaves.
+     Secondary: no fill — just a stroke colour change on hover.
+     ============================================================ */
+  .btn{position:relative;overflow:hidden;isolation:isolate;
+    transition:color .28s var(--ease),border-color .28s var(--ease),transform .18s var(--ease);}
+  .btn-orange{background:var(--orange);color:#fff;border:1px solid var(--orange);}
+  .btn-orange::before{content:"";position:absolute;inset:0;z-index:-1;background:#000;
+    transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .btn-orange:hover,.btn-orange:focus-visible{color:var(--orange);border-color:var(--orange);}
+  .btn-orange:hover::before,.btn-orange:focus-visible::before{transform:scaleX(1);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--hair);}
+  .btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--ink);background:rgba(20,20,20,.04);}
+  .hero .btn-ghost,.foot .btn-ghost{color:var(--snow);border-color:var(--hair-d);background:transparent;}
+  .hero .btn-ghost:hover,.hero .btn-ghost:focus-visible,
+  .foot .btn-ghost:hover,.foot .btn-ghost:focus-visible{border-color:#fff;background:rgba(255,255,255,.06);}
+  .foot .btn-snow{background:var(--snow);color:var(--night);border:1px solid var(--snow);}
+  .foot .btn-snow::before{content:"";position:absolute;inset:0;z-index:-1;background:#000;
+    transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+  .foot .btn-snow:hover,.foot .btn-snow:focus-visible{color:var(--orange);border-color:var(--orange);}
+  .foot .btn-snow:hover::before,.foot .btn-snow:focus-visible::before{transform:scaleX(1);}
+  @media(prefers-reduced-motion:reduce){
+    .btn{transition:color .28s,border-color .28s;}
+    .btn-orange::before,.foot .btn-snow::before{transition:none;}
+  }
+  /* ---------- case-study accordions (no large section headers) ---------- */
+  .cs-sections{padding:54px 0 8px;}
+  .acc{border-top:1px solid var(--hair);}
+  .acc:last-of-type{border-bottom:1px solid var(--hair);}
+  .acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;
+    padding:26px 4px;user-select:none;transition:color .2s var(--ease);}
+  .acc summary::-webkit-details-marker{display:none;}
+  .acc summary:hover{color:var(--orange-ink);}
+  .acc summary:hover .acc-plus::before,.acc summary:hover .acc-plus::after{background:var(--orange-ink);}
+  .acc-ix{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange-ink);
+    letter-spacing:.05em;flex:none;width:26px;}
+  .acc-h{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(18px,2.1vw,22px);
+    letter-spacing:-.01em;color:var(--ink);}
+  .acc-plus{margin-left:auto;position:relative;width:16px;height:16px;flex:none;}
+  .acc-plus::before,.acc-plus::after{content:"";position:absolute;background:var(--ink-2);
+    transition:transform .3s var(--ease),opacity .3s var(--ease),background .2s;}
+  .acc-plus::before{top:7px;left:0;width:16px;height:2px;}
+  .acc-plus::after{left:7px;top:0;width:2px;height:16px;}
+  .acc[open] .acc-plus::after{transform:rotate(90deg);opacity:0;}
+  .acc-body{padding:0 4px 34px 48px;max-width:calc(var(--measure) + 48px);}
+  .acc-body p{color:var(--ink-2);margin:0;}
+  .acc-body p+p{margin-top:16px;}
+  .acc-body p b{color:var(--ink);font-weight:600;}
+  .acc-body .insight{margin-top:26px;}
+  .acc[open] .acc-body{animation:accIn .34s var(--ease);}
+  @keyframes accIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+  @media(max-width:600px){.acc-body{padding-left:4px;}.acc summary{gap:12px;}}
+  @media(prefers-reduced-motion:reduce){.acc[open] .acc-body{animation:none;}}
 </style>
 </head>
 <body id="top">
@@ -157,7 +197,7 @@
   <section class="cs-hero">
     <div class="wrap">
       <h1 class="visually-hidden">OANDA — Trade Web — Density that scales with expertise, not a compromise for everyone</h1>
-      <p class="eyebrow">Product Design Lead · B2C &amp; B2B · FX / Trading</p>
+      <p class="eyebrow">UI/UX Designer · B2C acquisition · Fintech · Regulated (US)</p>
       <div class="cs-banner"><img src="oanda_banner.jpg" alt="OANDA — Trade Web case study — Density that scales with expertise, not a compromise for everyone" /></div>
     </div>
   </section>
@@ -165,53 +205,49 @@
     <div class="wrap">
       <p class="lab">Impact at a glance</p>
       <div class="impact-grid">
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">reduction in time-to-first-trade for new users</div></div>
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">increase in daily active session length for pros</div></div>
-        <div class="metric"><div class="n"><span class="ph">[XX%]</span></div><div class="l">drop in order-execution support tickets</div></div>
+        <div class="metric"><div class="n">10%</div><div class="l">faster to first trade for new users</div></div>
+        <div class="metric"><div class="n">Fewer</div><div class="l">trade-execution errors on those first trades</div></div>
+        <div class="metric"><div class="n">6&nbsp;mo</div><div class="l">delivered under strict US fintech compliance training</div></div>
       </div>
     </div>
   </section>
-  <section class="sec" id="context">
+    <section class="cs-sections">
     <div class="wrap">
-      <p class="kicker">Context</p>
-      <h2>One screen, two very different traders</h2>
-      <p>OANDA is a 25+ year forex and CFD broker serving retail and institutional traders who make time-sensitive decisions on live market data.</p>
-      <p>I worked on the OANDA Trade web platform, where the core design tension is permanent: expert traders want density and speed; newer traders need clarity and confidence — on the same screen.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Challenge</p>
-      <h2>Serve both without compromising either</h2>
-      <p>The platform had to serve both audiences without becoming a compromise that satisfied neither — a dashboard too dense for beginners and too sparse for professionals loses both segments to competitors built for one or the other.</p>
-      <p>The brief was to <b>redesign the core trading dashboard so information density scaled to user expertise</b> without fragmenting the product into separate apps.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Approach &amp; Process</p>
-      <h2>Density as a setting, not a decision</h2>
-      <p>I segmented research by trading frequency rather than by demographic — day traders, swing traders, and occasional traders think about the same screen completely differently. That led to a progressive-disclosure model: a clean default view for lower-frequency users, with power features (advanced order types, multi-chart layouts) available a layer down rather than always-on.</p>
-      <p>Every research readout was reduced to a single stat per trader segment, so the case for progressive disclosure was legible to a trading-desk stakeholder in one glance, not twenty.</p>
-      <div class="insight">
-        <div class="cap">Key insight</div>
-        <div class="big">Day, swing and occasional traders read the same screen completely differently. <em>Density had to be a setting, not a fixed decision.</em></div>
+    <details class="acc" id="context" open>
+      <summary><span class="acc-ix">01</span><span class="acc-h">Context</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>On a six-month engagement through GAIN Conversion, I was the UI/UX designer optimising OANDA&rsquo;s B2C acquisition funnel for a demanding audience: <b>experienced traders</b> with expert knowledge of US markets. I worked in a pod with a PM, UX consultant, UI developer and QA.</p>
       </div>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Impact</p>
-      <h2>Simpler by default, no cost to the pros</h2>
-      <p>New users reached their first trade faster with fewer execution errors, while active traders retained — and in some workflows increased — their session depth, showing the simplified default didn't cost the power users anything. Support volume tied to order-execution confusion fell, directly reducing operational cost.</p>
-    </div>
-  </section>
-  <section class="sec">
-    <div class="wrap">
-      <p class="kicker">Learnings &amp; Reflection</p>
-      <h2>Let density be earned progressively</h2>
-      <p>The instinct in trading UI is to design for the loudest, most vocal power users. The bigger unlock here was <b>treating density as a setting, not a fixed design decision</b> — letting expertise reveal itself through use rather than forcing every user through an onboarding quiz to declare it upfront.</p>
-      <p>Reflection: the best interfaces for expert tools often aren't the densest ones — they're the ones that let density be earned progressively.</p>
+    </details>
+    <details class="acc" id="challenge">
+      <summary><span class="acc-ix">02</span><span class="acc-h">Challenge</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>This was regulated fintech at its strictest. We completed <b>US compliance training</b> to work on the funnel at all &mdash; and I couldn&rsquo;t touch any component carrying brand ambassador Robert Lewandowski&rsquo;s image. That confined testing to lower-traffic pages with stock imagery, where thin traffic makes statistically valid A/B results genuinely hard to win.</p>
+      </div>
+    </details>
+    <details class="acc" id="process">
+      <summary><span class="acc-ix">03</span><span class="acc-h">Process</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>We ran on a biweekly rhythm: presenting research insights, pitching experiment concepts for runway approval, and reviewing in-flight A/B performance. I designed within tight compliance and imagery constraints, optimising the pages I could touch and building experiments robust enough to <b>read signal from limited traffic</b>.</p>
+        <div class="insight">
+          <div class="cap">The real constraint</div>
+          <div class="big">Expert traders don&rsquo;t need persuading &mdash; they need speed and confidence. <em>The win was removing friction, not adding motivation.</em></div>
+        </div>
+      </div>
+    </details>
+    <details class="acc" id="impact">
+      <summary><span class="acc-ix">04</span><span class="acc-h">Impact</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>New users reached their <b>first trade 10% faster</b>, with <b>fewer execution errors</b> along the way &mdash; a meaningful result on a funnel where every change had to clear compliance and prove itself on low-traffic pages.</p>
+      </div>
+    </details>
+    <details class="acc" id="learnings">
+      <summary><span class="acc-ix">05</span><span class="acc-h">Learnings</span><span class="acc-plus" aria-hidden="true"></span></summary>
+      <div class="acc-body">
+        <p>Constraint is a design brief in disguise. Locked out of the highest-traffic, highest-impact components, I learned to extract clean signal from thin traffic and to treat compliance not as a blocker but as a fixed edge of the canvas.</p>
+        <p>Designing for experts also reframed the job: for a savvy audience, <em>clarity and speed beat persuasion</em> every time.</p>
+      </div>
+    </details>
     </div>
   </section>
   <section class="next">
@@ -243,6 +279,10 @@
 </section>
 <div class="toast" id="toast">Email copied</div>
 <script>
+  // deep-link: open the accordion matching the URL hash
+  function openHash(){const h=location.hash.slice(1);if(!h)return;const el=document.getElementById(h);if(el&&el.tagName.toLowerCase()==='details'){el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}}
+  window.addEventListener('hashchange',openHash);openHash();
+
   const toast=document.getElementById('toast');
   document.querySelectorAll('[data-copy]').forEach(btn=>{
     btn.addEventListener('click',async()=>{
